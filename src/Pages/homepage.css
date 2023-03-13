@@ -1,0 +1,36 @@
+:root{
+  --rflex:'flex';
+  --rnone:'none'
+
+}
+.scroll::-webkit-scrollbar {
+  width: 2px;               /* width of the entire scrollbar */
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #494646;    /* color of the scroll thumb */
+  border-radius: 20px;  
+  
+       /* roundness of the scroll thumb */
+  /* border: 3px solid orange;   */
+  /* creates padding around scroll thumb */
+}
+
+.suggestions{
+  display: var(--rflex);
+}
+.slide_div{
+  display: var(--rnone)
+}
+.yadhu{color:'white'}
+@media screen and (max-width:950px) {
+  
+  
+  .suggestions{
+    display: none;
+  }
+  /* .slides{
+
+  } */
+ 
+}

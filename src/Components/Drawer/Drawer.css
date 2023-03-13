@@ -1,0 +1,27 @@
+.overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .fill {
+    flex: 1;
+    background: transparent;
+  }
+  
+  .drawer {
+    height: 100%;
+    background-color: #ffffff;
+  }
+.tray{
+    
+        font-family: sans-serif;
+        text-align: center;
+  
+}  

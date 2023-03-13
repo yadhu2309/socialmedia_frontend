@@ -1,0 +1,223 @@
+<Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+     
+              >
+        <Fade in={open}>
+          <Box sx={{...style,height:modalContent==='post'?500:300,
+    minWidth:modalContent==='post'?700:300}} >
+           
+          {modalContent === 'post'?<> <Box style={{
+      
+
+            
+           width:modalContent==='post'?'60%':300,paddingTop:'4em'}}>
+{verify && console.log('postdetails when verify',post_details)}
+          {/* for identifying the user is verified */}
+          {verify?
+          
+          //  <Carousel veri={verify} imgvalone={verifyimage}/>
+          verifyimage && 
+          <LazyLoadImage
+          // className="d-block w-100"
+          width='100%'
+           height={300}
+           
+          src={require('../posts/'+verifyimage)}
+          alt="First slide"
+        />
+           : <Carousel imgvalone={postDetailsImage.one}  imgvaltwo={postDetailsImage.two} imgvalthree={postDetailsImage.three}/>}
+</Box>
+ <Box id="transition-modal-description" sx={{
+  borderLeft:'1px solid #65676b',
+  marginLeft:'3px',
+  width:'50%'}}>
+ <div style={{height:'90%'}}>
+ <div style={{borderBottom:'1px solid #65676b',
+    margin:'auto',
+    width:"97%",
+      display:'flex',}}>
+      <Box sx={{  bgcolor: 'white',
+                        borderColor: 'text.primary',
+                        m: 1,
+                        border:'none',
+                        width: '2rem',
+                        height: '2rem', borderRadius: '50%',
+                        overflowY:'hidden',
+                        cursor:'pointer'
+                         }} >
+                            
+                        {/* {console.log('helo',props.mem)} */}
+     {nav?
+      post_details && post_details.profile?
+      <img
+       src={require('../profileImages/'+post_details.profile.replace('profileImages/',''))} 
+       width='100%' height='100%'/>:''
+       :
+     bool?
+      <img
+       src={require('../profileImages/'+profile)} 
+       width='100%' height='100%'/>
+      :''
+      }
+        </Box>
+        <span style={{color:'#ffff',marginTop:'.5em',cursor:'pointer'}}>
+          {nav?post_details&&post_details.username:user.username}<span>
+            {/* {console.log('iam verifed',verified)} */}
+             {verified? <VerifiedIcon sx={{marginLeft:'3px',width:'16px',height:'16px'}}/>:''}
+             
+                        </span>
+          </span>
+      </div>
+      <span style={{color:'#ffff',marginLeft:'.5em',cursor:'pointer'}}>
+      {post_details && post_details.title}
+      </span>
+    
+ </div>
+ <div style={{height:'10%',
+ borderTop:'1px solid #65676b',
+ width:'97%',margin:'auto',
+ display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+  <div>
+    {/* <ThumbUpOffAltIcon sx={{color:'#65676b'}}/> */}
+    {
+  like ?
+  <ThumbUpAltIcon
+  //  onClick={dislike}
+    sx={{color:'#AF34BA',cursor:'pointer'}}
+    onClick={nav?()=>{dislike(post_details.pid)}:()=>{dislike(post_details.id)}
+    }
+    />
+    :
+      <ThumbUpOffAltIcon sx={
+        {color:'#65676b',cursor:'pointer'}}
+         onClick={nav?()=>{Like(post_details.pid,user.id)}:()=>{Like(post_details.id,user.id)}}
+        />
+ }
+ {/* {likeCount && console.log('like count',likeCount)} */}
+ {likeCount && likeCount>= 2 && <span style={{color:'#65676b'}} >{likeCount}</span>}
+  </div>
+{save?'':<BookmarkBorderIcon sx={{color:'#65676b'}}/>}
+ </div>
+            </Box></>:
+
+              // following and followers list in modal
+
+            <div className='scroll' style={{width:300}}>
+                  <div style={{display:'flex',justifyContent:'space-between',
+                  alignItems:'center',width:300,
+                  borderBottom:'1px solid white',
+                  zIndex:1,
+                  backgroundColor:'#323333',
+                  fontWeight:'bold',
+                  color:"white",
+                  top:0,
+                  padding:'5px',
+                  position:"fixed"}}><span></span>{identify?<span>Followers</span>:<span>Following</span>}
+                  
+                      <div>
+                          <CloseIcon sx={{cursor:'pointer'}} onClick={handleClose}/>
+                      </div>
+                    </div>
+            
+      <div  style={{
+        // border:'1px solid white',
+      width:'100%',marginTop:"1.7em"}}>
+              {
+            identify? 
+            followers && followers.map((data)=>{
+              let imageProf = data.dp
+              // console.log('imagefollowers',data)
+              return(<>
+                <div style={{display:'flex'}}
+                onClick={()=>usersDetailhandle(data.acc_uid)}
+                >
+                  <Box sx={{  bgcolor: 'white',
+                      borderColor: 'text.primary',
+                      m: 1,
+                      border:'none',
+                      width: '2rem',
+                      height: '2rem', borderRadius: '50%',
+                      overflowY:'hidden',
+                      cursor:'pointer'
+                      }} >
+                          
+            {
+            imageProf? <img src={require('../'+imageProf)}
+             width='100%' height='100%'/>
+             :<Avatar sx={{width:'100%',height:'100%'}}/>
+             }
+            </Box>
+                  <span style={{display:'flex',
+                  alignItems:'center',
+                  color:'#ebeae8',
+                  paddingLeft:'5px',
+                  cursor:'pointer'}}
+                  >{data.username}
+                  {
+                  data.verified? 
+                  <VerifiedIcon sx={{marginLeft:'3px',
+                  width:'16px',height:'16px'}}/>
+                  :''
+                  }
+                  </span>
+                  </div>
+                      </>  )
+      
+              })
+              :
+              following && following.map((data)=>{
+                let imageProf = data.dp
+              // console.log('imagefollowing',data)
+              return(<>
+                <div style={{display:'flex'}}
+                 onClick={()=>usersDetailhandle(data.f_uid)}
+                >
+                  <Box sx={{  bgcolor: 'white',
+                      borderColor: 'text.primary',
+                      m: 1,
+                      border:'none',
+                      width: '2rem',
+                      height: '2rem', borderRadius: '50%',
+                      overflowY:'hidden',
+                      cursor:'pointer'
+                      }} >
+                          
+            {
+            imageProf? 
+            <img src={require('../'+imageProf)}
+             width='100%' height='100%'/>
+             :<Avatar sx={{width:'100%',height:'100%'}}/>
+             }
+            </Box>
+                  <span style={{display:'flex',
+                  alignItems:'center',
+                  color:'#ebeae8',paddingLeft:'5px',
+                  cursor:'pointer'}}
+                  >
+                    {data.username}
+                    {
+                      data.verified? 
+                      <VerifiedIcon sx={{marginLeft:'3px',
+                      width:'16px',height:'16px'}}/>
+                      :''
+                    }
+                    </span>
+                  </div>
+            </>  )
+      
+              })
+      }
+        </div>
+      </div>
+      }
+
+            
+
+          </Box>
+          
+        </Fade>
+      </Modal> 

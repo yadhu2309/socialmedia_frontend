@@ -1,0 +1,18 @@
+.navlabel:hover{
+    background-color: blueviolet;
+    
+
+}
+.follow:hover{
+    color:'#ffffff'
+}
+.mentor:hover{
+    color:'blue'
+}
+div.news{background-color: brown;}
+
+.message:focus{
+    outline: none;
+}
+
+  
