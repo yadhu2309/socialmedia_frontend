@@ -100,6 +100,9 @@ function Profile(props) {
   const[foruser,setForuser]=useState('')
   const[foruserSave,setForuserSave]=useState()
 
+  //image loading
+  const [isLoading, setIsLoading] = useState(true);
+
   //like
   const[like,setLike] = useState(false)
   const[likeCount,setLikeCount] = useState()
@@ -377,7 +380,18 @@ const check_saved=(id)=>{
                          }} >
                             
                         {/* {console.log('helo',props.mem)} */}
-       {bool? <img src={profile} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+                        <img style={{display:'none'}} src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
+       {bool?isLoading ?
+      <Backdrop
+       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+       open
+       
+       >
+       <CircularProgress color="inherit" />
+     </Backdrop>:
+       <img src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
+     :<Avatar sx={{width:'100%',height:'100%'}}/>
+     }
        
        {/* <img src={require('../profileImages/'+profile)} width='100%' height='100%'/> */}
         </Box>

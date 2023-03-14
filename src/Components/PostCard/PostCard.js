@@ -41,8 +41,9 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
+    
     <Card
-   
+    
      sx={{ maxWidth: 345,marginRight:'10px',marginBottom:'10px',cursor:'pointer'}}>
       {props.veri?
       <LazyLoadImage src={l}

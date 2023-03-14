@@ -1,4 +1,6 @@
 import * as React from 'react';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,7 +24,7 @@ import './Signup.css'
 const theme = createTheme();
 
 export default function SignUp() {
-
+const[show,setShow]=React.useState(true)
 
   //show password
 const inputRef = React.useRef(null);
@@ -30,9 +32,11 @@ const showPassword = ()=>{
 //  inputRef.current.focus()
 if(inputRef.current.type==='password'){
   inputRef.current.type='text'
+  setShow(false)
 }
 else{
   inputRef.current.type='password'
+  setShow(true)
 }
  
 }
@@ -52,52 +56,49 @@ else{
   const handleSubmit = (event) => {
     event.preventDefault();
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+    let content={}
     if(val.firstname === ''){
-      let content={
-        ...error,
+    content={
+        ...content,
         efirstname:'please enter your name'
       }
-      setError(content)
+     
     }
-     else if(val.lastname === ''){
-      let content ={
-        ...error,
+  if(val.lastname === ''){
+    content={
+      ...content,
         elastname:'please enter your name'
       }
       setError(content)
     }
-     else if(val.username === ''){
-      let content = {
-        ...error,
+     if(val.username === ''){
+      content={
+        ...content,
         eusername:'please enter a value'
 
       }
       setError(content)
-    }else if(val.email === '' || !val.email.match(validRegex)){
-         let content ={
-          ...error,
-          eemail:'please enter email address'
+    } if(val.email === '' || !val.email.match(validRegex)){
+      content={
+        ...content,
+          eemail:'please enter valid email address'
          }
          setError(content)
-        }else if(val.phone === '' || val.phone.length>10 || val.phone.length<10){
-          let content = {
-            ...error,
+        }if(val.phone === '' || val.phone.length>10 || val.phone.length<10){
+          content={
+            ...content,
             ephone:'please enter valid phone number'
           }
           setError(content)
-    }else if(val.password === ''){
-      let content={
-        ...error,
+    } if(val.password === ''){
+      content={
+        ...content,
          epassword:'please enter your password' 
       }
-      setError(content)
     }
-    else{
+    setError(content)
+  if(Object.keys(content).length === 0){
+    console.log('content')
 
       axios.post('https://www.smedia.fun/api/signup/',{
       username:val.username,
@@ -230,6 +231,7 @@ else{
                 {error.ephone && <span style={{color:'red'}}>{error.ephone}</span>}
               </Grid>
               <Grid item xs={12}>
+                <div style={{display:'flex',alignItems:'center'}}>
                 <TextField
                  inputRef={inputRef}
                   required
@@ -243,7 +245,8 @@ else{
                   onChange={makeChange}
                   value={val.password}
                 />
-                 <input type="checkbox" onClick={showPassword}/>show password
+                {show? <VisibilityIcon onClick={showPassword}/>:
+                <VisibilityOffIcon onClick={showPassword}/>}</div>
                 {error.epassword && <span style={{color:'red'}}>{error.epassword}</span>}
               </Grid>
               {/* <Grid item xs={12}>
