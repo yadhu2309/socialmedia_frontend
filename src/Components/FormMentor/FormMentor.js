@@ -182,79 +182,77 @@ else{
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+   
+    let content = {}
     if(val.firstname===''){
-     let content = {
-       ...error,
+     content = {
+       ...content,
        efirstname:'please enter a valid firstname'
      }
-     setError(content)
+ 
    }
-   else if(val.lastname===''){
-    let content = {
-      ...error,
+   if(val.lastname===''){
+    content = {
+      ...content,
       elastname:'please enter a valid lastname'
     }
-    setError(content)
+   
   }
-  else if(val.address===''){
-        let content = {
-          ...error,
+  if(val.address===''){
+    content = {
+      ...content,
           eaddress:'please enter a valid address'
         }
-        setError(content)
+   
       }
-      else if(val.country===''){
-            let content = {
-              ...error,
+      if(val.country===''){
+        content = {
+          ...content,
               ecountry:'please fill this field'
             }
-            setError(content)
+          
           }
-          else if(val.state===''){
-            let content = {
-              ...error,
+          if(val.state===''){
+            content = {
+              ...content,
               estate:'please fill this field'
             }
-            setError(content)
+         
           }
       
    
-    else if(val.username===''){
-      let content = {
-        ...error,
+    if(val.username===''){
+      content = {
+        ...content,
         eusername:'please enter a valid username'
       }
-      setError(content)
+   
     }
    
-     else if(val.email===''){
-      let content = {
-        ...error,
+     if(val.email===''){
+      content = {
+        ...content,
         eemail:'please enter a valid email'
       }
-      setError(content)
+     
     }
-    else if(val.phone===''|| val.phone.length<10 || val.phone.length>10){
-      let content = {
-        ...error,
+    if(val.phone===''|| val.phone.length<10 || val.phone.length>10){
+      content = {
+        ...content,
         ephone:'please enter a valid phone number'
       }
-      setError(content)
+      
     } 
-    else if(val.password===''){
-      let content = {
-        ...error,
+    if(val.password===''){
+      content = {
+        ...content,
         epassword:'please enter a valid password'
       }
-      setError(content)
+      
     }   
+    setError(content)
   
-else{
+if(Object.keys(content).length === 0){
   setError({eusername:'',epassword:'',eemail:'',
   elastname:'',efirstname:'',ephone:'',eaddress:'',ecountry:'',estate:''})
     axios.post('https://www.smedia.fun/api/mentors',{

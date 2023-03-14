@@ -84,61 +84,62 @@ const[error,setError] = React.useState({first_name:'',
 }
 
 const requestSubmit =()=>{
+  let content ={}
   var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   if(val.first_name==='' || val.last_name===''){
-    let content={
-      ...error,
+    content={
+      ...content,
       first_name:'please enter a valid name'
     }
     setError(content)
-  }else if(val.phone===''|| val.phone.length<10 || val.phone.length>10){
-    let content={
-      ...error,
+  }if(val.phone===''|| val.phone.length<10 || val.phone.length>10){
+    content={
+      ...content,
       phone:'please enter a valid phone number'
     }
-    setError(content)
+  
   }
-  else if(val.email===''|| !val.email.match(validRegex)){
-    let content={
-      ...error,
+  if(val.email===''|| !val.email.match(validRegex)){
+    content={
+      ...content,
       email:'please enter a valid email'
     }
-    setError(content)
+   
 
-  }else if(val.address===''){
-    let content={
-      ...error,
+  }if(val.address===''){
+    content={
+      ...content,
       address:'please enter a valid address'
     }
-    setError(content)
 
-  }else if(val.company_name===''){
-    let content={
-      ...error,
+
+  }if(val.company_name===''){
+    content={
+      ...content,
       company_name:'please enter a valid name'
     }
-    setError(content)
-
+    
 
   }
-  else if(val.company_email===''){
-    let content={
-      ...error,
+  if(val.company_email===''){
+    content={
+      ...content,
       company_email:'please enter a valid email'
     }
-    setError(content)
+ 
 
 
   }
-  else if(val.company_address===''){
-    let content={
-      ...error,
+  if(val.company_address===''){
+    content={
+      ...content,
       company_address:'please enter a valid address'
     }
-    setError(content)
-
-
-  }else{
+    
+    
+  }
+  setError(content)
+  if(Object.keys(content).length === 0){
   axios.post('https://www.smedia.fun/api/requesttoverify',{
     name:val.first_name+val.last_name,
     email:val.email,
