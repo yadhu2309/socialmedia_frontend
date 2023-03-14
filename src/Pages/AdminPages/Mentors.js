@@ -7,7 +7,7 @@ import { AuthContext } from '../../utils/AuthContext'
 function Mentors() {
   let{mentor,setMentor}=useContext(AuthContext)
   useEffect(()=>{
-    axios.get('http://127.0.0.1:8000/api/mentor_list').then((response)=>{
+    axios.get('https://www.smedia.fun/api/mentor_list').then((response)=>{
       setMentor(response.data)
     })
 

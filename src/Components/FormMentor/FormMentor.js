@@ -257,7 +257,7 @@ else{
 else{
   setError({eusername:'',epassword:'',eemail:'',
   elastname:'',efirstname:'',ephone:'',eaddress:'',ecountry:'',estate:''})
-    axios.post('http://127.0.0.1:8000/api/mentors',{
+    axios.post('https://www.smedia.fun/api/mentors',{
       username:val.username,
       email:val.email,
       phone:val.phone,

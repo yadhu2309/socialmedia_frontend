@@ -156,7 +156,7 @@ const[messages,setMessages] = useState([])
   const roomCreation=()=>{
        
 
-    axios.post('http://127.0.0.1:8000/api/rooms',{
+    axios.post('https://www.smedia.fun/api/rooms',{
      room_name:user.username,
      sender:'a',
      receiver:user.username
@@ -187,7 +187,7 @@ const[messages,setMessages] = useState([])
     useEffect(()=>{
       // console.log('username ',user.username)
        
-      clients.current = new W3CWebSocket(`ws://127.0.0.1:8000/ws/${rooms.room_name}`)
+      clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${rooms.room_name}`)
 
       // setClient(clients)
     //   rooms&&axios.get(`http://127.0.0.1:8000/api/chatmessages/${rooms.id}`).then((response)=>{
@@ -238,7 +238,7 @@ const[messages,setMessages] = useState([])
 
   // }
   React.useEffect(()=>{
-    axios.get('http://127.0.0.1:8000/api/allusers').then((response)=>{
+    axios.get('https://www.smedia.fun/api/allusers').then((response)=>{
       setAllUsers(response.data)
     })
     roomCreation()
@@ -248,7 +248,7 @@ const[messages,setMessages] = useState([])
 
    
 
-    axios.get(`http://127.0.0.1:8000/api/notify_get/${user.id}`).then((respone)=>{
+    axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
       setNotification(respone.data)
       console.log('setnotification',respone.data)
 })
@@ -256,7 +256,7 @@ const[messages,setMessages] = useState([])
   },[notify])
 
   const handleNotification=()=>{
-    axios.get(`http://127.0.0.1:8000/api/notify_get/${user.id}`).then((respone)=>{
+    axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
             setNotification(respone.data)
             console.log('setnotification',respone.data)
     })

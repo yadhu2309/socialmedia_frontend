@@ -170,7 +170,7 @@ const roomCreation=(receiver_name,sender_name)=>{
   //    setRooms(receiver_name+sender_name):set
   setReceiverName(receiver_name)
 console.log('mentorroom',receiver_name+sender_name)
-   axios.post('http://127.0.0.1:8000/api/rooms',{
+   axios.post('https://www.smedia.fun/api/rooms',{
     room_name:receiver_name+sender_name,
     sender:sender_name,
     receiver:receiver_name
@@ -221,9 +221,9 @@ React.useEffect(() => {
 React.useEffect(()=>{
   // console.log('username ',user.username)
    
-  clients.current = new W3CWebSocket(`ws://127.0.0.1:8000/ws/${rooms.room_name}/`)
+  clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${rooms.room_name}/`)
   // setClient(clients)
-  rooms&&axios.get(`http://127.0.0.1:8000/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
        console.log(clients.current,"hey",rooms.room_name)
@@ -250,7 +250,7 @@ console.log('after send',clients.current)
 
 },[rooms.room_name])
 React.useEffect(()=>{
-  rooms&&selectUser.username===receiverName&&axios.get(`http://127.0.0.1:8000/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&selectUser.username===receiverName&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
 
@@ -266,7 +266,7 @@ React.useEffect(()=>{
 
   const handleFollow = (id)=>{
     console.log('followid',id)
-    axios.post(`http://127.0.0.1:8000/api/follow_check/${mentorLog.id}`,{
+    axios.post(`https://www.smedia.fun/api/follow_check/${mentorLog.id}`,{
       acc_uid:mentorLog.id,
       f_uid:id
     }).then((response)=>{
@@ -276,7 +276,7 @@ React.useEffect(()=>{
     })
   }
   const handleUnfollow = (id)=>{
-    axios.delete(`http://127.0.0.1:8000/api/unfollow/${id}/${mentorLog.id}`).then((response)=>{
+    axios.delete(`https://www.smedia.fun/api/unfollow/${id}/${mentorLog.id}`).then((response)=>{
       // console.log('success')
       setFollow(response.data)
       setF_bool(!f_bool)
@@ -346,17 +346,17 @@ personalstate && setPersonalstate(false)
   React.useEffect(()=>{
 
     //users
-    axios.get('http://127.0.0.1:8000/api/users').then((response)=>{
+    axios.get('https://www.smedia.fun/api/users').then((response)=>{
         setUsers(response.data)
         console.log('users data',response.data)
     })
 
     //verifeid users
-    axios.get('http://127.0.0.1:8000/api/userlist').then((response)=>{
+    axios.get('https://www.smedia.fun/api/userlist').then((response)=>{
       setV_users(response.data)
     })
 
-    axios.get(`http://127.0.0.1:8000/api/profileImage/${mentorLog.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/profileImage/${mentorLog.id}`).then((response)=>{
       // 
       console.log(response.data)
      
@@ -367,16 +367,16 @@ personalstate && setPersonalstate(false)
       
   })
 
-  axios.get('http://127.0.0.1:8000/api/mentor_list').then((response)=>{
+  axios.get('https://www.smedia.fun/api/mentor_list').then((response)=>{
     setMentorlist(response.data)
   })
   // follow 
-  axios.get(`http://127.0.0.1:8000/api/follow/${mentorLog.id}`).then((response)=>{
+  axios.get(`https://www.smedia.fun/api/follow/${mentorLog.id}`).then((response)=>{
     console.log('menotfollow',response.data);
     setFollow(response.data)
 })
 
-axios.get(`http://127.0.0.1:8000/api/followgets/${mentorLog.id}`).then((response)=>{
+axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((response)=>{
           setConnection(response.data)
           console.log('following',response.data)
         })
@@ -683,7 +683,7 @@ axios.get(`http://127.0.0.1:8000/api/followgets/${mentorLog.id}`).then((response
                   }
                 {
                   verifeiduser?v_users && v_users.map((data,index)=>{
-                    console.log('mentor list users',mentorLog.username)
+                    // console.log('mentor list users',mentorLog.username)
                     return(
                       <div key={index} style={{display:'flex',justifyContent:'space-between',alignItems:'center',cursor:'pointer'}}>
                       <div style={{display:"flex",alignItems:'center',width:"100%",

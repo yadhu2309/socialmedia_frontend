@@ -97,7 +97,7 @@ const[messages,setMessages] = React.useState([])
   const roomCreation=()=>{
        
 
-    axios.post('http://127.0.0.1:8000/api/rooms',{
+    axios.post('https://www.smedia.fun/api/rooms',{
      room_name:props.username,
      sender:user.username,
      receiver:'a'
@@ -186,13 +186,13 @@ const[messages,setMessages] = React.useState([])
 
   const handleMouseEnter = (id) => {
     setIsHovering(true);
-    axios.get(`http://127.0.0.1:8000/api/followers/${id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/followers/${id}`).then((response)=>{
       setFollowers(response.data)
     })
-    axios.get(`http://127.0.0.1:8000/api/followget/${id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/followget/${id}`).then((response)=>{
       setFollowing(response.data)
     })
-  axios.get(`http://127.0.0.1:8000/api/postget/${id}`).then((response)=>{
+  axios.get(`https://www.smedia.fun/api/postget/${id}`).then((response)=>{
       // 
       
       setPost(response.data)
@@ -212,7 +212,7 @@ const[messages,setMessages] = React.useState([])
 
   // saved post
    const saved =()=>{
-    axios.post('http://127.0.0.1:8000/api/saved/',{
+    axios.post('https://www.smedia.fun/api/saved/',{
       pid:props.postId,
       user_who_own:props.id,
       user_who_save:user.id,
@@ -224,7 +224,7 @@ const[messages,setMessages] = React.useState([])
    }
 
    const unsave=()=>{
-    axios.delete(`http://127.0.0.1:8000/api/saved/${props.postId}/${user.id}`).then((response)=>{
+    axios.delete(`https://www.smedia.fun/api/saved/${props.postId}/${user.id}`).then((response)=>{
       setSave(false)
     })
    }
@@ -234,7 +234,7 @@ const[messages,setMessages] = React.useState([])
 //room creation
 
     //websocket connection
-    clients.current = new W3CWebSocket(`ws://127.0.0.1:8000/ws/${props.username}`)
+    clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${props.username}`)
 
     console.log(clients.current,"hey")
         if(clients.current) {
@@ -244,7 +244,7 @@ const[messages,setMessages] = React.useState([])
       }}
   
      
-    axios.post(`http://127.0.0.1:8000/api/like/${props.postId}/${user.id}`,{
+    axios.post(`https://www.smedia.fun/api/like/${props.postId}/${user.id}`,{
     pid:id,
     user_who_like:uid,
     }).then((response)=>{
@@ -274,7 +274,7 @@ const[messages,setMessages] = React.useState([])
   };
   
   const dislike = (id,uid)=>{
-    axios.delete(`http://127.0.0.1:8000/api/dislike/${props.postId}/${user.id}`).then((response)=>{
+    axios.delete(`https://www.smedia.fun/api/dislike/${props.postId}/${user.id}`).then((response)=>{
     
       setLike(false)
       setLikeCount(likeCount-1);
@@ -290,7 +290,7 @@ const[messages,setMessages] = React.useState([])
     //room creation
      roomCreation()
 
-    axios.get(`http://127.0.0.1:8000/api/like_show/${props.postId}/${user.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/like_show/${props.postId}/${user.id}`).then((response)=>{
       if(response.status == 200){
       
     setLike(true)
@@ -301,7 +301,7 @@ const[messages,setMessages] = React.useState([])
 
     // to check saved or not
 
-    axios.get(`http://127.0.0.1:8000/api/saved/${props.postId}/${user.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/saved/${props.postId}/${user.id}`).then((response)=>{
       console.log('saveme',response.data);
       if(response.status == 200){
     setSave(true)
@@ -310,7 +310,7 @@ const[messages,setMessages] = React.useState([])
       console.log('there might be error')
     })
 
-    axios.get(`http://127.0.0.1:8000/api/countLike/${props.postId}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/countLike/${props.postId}`).then((response)=>{
       console.log('count',response.data)
      setLikeCount(response.data.length)
      setLikeCountData(response.data)
