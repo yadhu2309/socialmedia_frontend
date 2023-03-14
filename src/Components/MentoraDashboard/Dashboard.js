@@ -166,6 +166,8 @@ const[messages,setMessages] = React.useState([])
   const clients = React.useRef()
 const[msg,setMsg]=React.useState('')
 const roomCreation=(receiver_name,sender_name)=>{
+  if(clients.current){clients.current.close()}
+
   // sender_name===user.username?
   //    setRooms(receiver_name+sender_name):set
   setReceiverName(receiver_name)
