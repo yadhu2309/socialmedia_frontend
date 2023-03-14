@@ -48,7 +48,6 @@ const style = {
     // justifyContent:'center',
     // alignItems:'center'
   
-   
   };
 
   const commonStyles ={
