@@ -99,7 +99,7 @@ else{
     }
     else{
 
-      axios.post('http://127.0.0.1:8000/api/signup/',{
+      axios.post('https://www.smedia.fun/api/signup/',{
       username:val.username,
       email:val.email,
       phone:val.phone,

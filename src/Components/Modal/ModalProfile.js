@@ -56,7 +56,7 @@ props.save&&props.setSave(false)};
 let{user,usersId,setUsersId,openModal,setOpenModal} = React.useContext(AuthContext)
 
 const saved =()=>{
-    axios.post('http://127.0.0.1:8000/api/saved/',{
+    axios.post('https://www.smedia.fun/api/saved/',{
       pid:props.post_details.id,
       user_who_own:props.post_details.uid,
       user_who_save:user.id,
@@ -69,7 +69,7 @@ const saved =()=>{
    }
 
    const unsave=()=>{
-    axios.delete(`http://127.0.0.1:8000/api/saved/${props.post_details.pid}/${user.id}`).then((response)=>{
+    axios.delete(`https://www.smedia.fun/api/saved/${props.post_details.pid}/${user.id}`).then((response)=>{
       props.setSave(false)
       
     })

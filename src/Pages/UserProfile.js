@@ -80,7 +80,7 @@ function UserProfile() {
     const Like = (id,uid)=>{
       console.log('hello',id,'user',uid)
      
-      axios.post(`http://127.0.0.1:8000/api/like/${id}/${user.id}`,{
+      axios.post(`https://www.smedia.fun/api/like/${id}/${user.id}`,{
       pid:id,
       user_who_like:uid,
       }).then((response)=>{
@@ -91,7 +91,7 @@ function UserProfile() {
   
     };
     const dislike = (id,uid)=>{
-      axios.delete(`http://127.0.0.1:8000/api/dislike/${id}/${user.id}`).then((response)=>{
+      axios.delete(`https://www.smedia.fun/api/dislike/${id}/${user.id}`).then((response)=>{
         // console.log('suuceess dislike');
         setLike(false)
         setLikeCount(likeCount-1)
@@ -138,7 +138,7 @@ const handlePostDetails = (id)=>{
     }
 
     const check_like=(id)=>{
-      axios.get(`http://127.0.0.1:8000/api/like_show/${id}/${user.id}`).then((response)=>{
+      axios.get(`https://www.smedia.fun/api/like_show/${id}/${user.id}`).then((response)=>{
           
           
        console.log('userlike',response.data)
@@ -147,7 +147,7 @@ const handlePostDetails = (id)=>{
             //  setLikeCount(response.data)
            }
          })
-         axios.get(`http://127.0.0.1:8000/api/countLike/${id}`).then((response)=>{
+         axios.get(`https://www.smedia.fun/api/countLike/${id}`).then((response)=>{
           console.log('count',response.data)
           setLikeCount(response.data.length)
          }).catch((error)=>{
@@ -161,7 +161,7 @@ const handlePostDetails = (id)=>{
 
 
     useEffect(()=>{
-        usersId && axios.get(`http://127.0.0.1:8000/api/userDetailview/${usersId}`).then((response)=>{
+        usersId && axios.get(`https://www.smedia.fun/api/userDetailview/${usersId}`).then((response)=>{
         setDetail(response.data)
         if(response.data.user_image[0]){
         setProfile(response.data.user_image[0].dp)}
@@ -171,7 +171,7 @@ const handlePostDetails = (id)=>{
         setBool(true)
     })
 
- usersId &&   axios.get(`http://127.0.0.1:8000/api/postget/${usersId}`).then((response)=>{
+ usersId &&   axios.get(`https://www.smedia.fun/api/postget/${usersId}`).then((response)=>{
       // 
       console.log('kio',response.data)
       setLoop(response.data)
@@ -179,7 +179,7 @@ const handlePostDetails = (id)=>{
       
       
   })
-  axios.get(`http://127.0.0.1:8000/api/userCheck/${user.id}`).then((response)=>{
+  axios.get(`https://www.smedia.fun/api/userCheck/${user.id}`).then((response)=>{
             // 
             console.log('kio',response.data)
             setVerify(response.data.verified)
@@ -187,13 +187,13 @@ const handlePostDetails = (id)=>{
             
         })
          // following list
-         axios.get(`http://127.0.0.1:8000/api/followgets/${usersId}`).then((response)=>{
+         axios.get(`https://www.smedia.fun/api/followgets/${usersId}`).then((response)=>{
           setFollowing(response.data)
           // console.log('following',response.data)
         })
 
         // followers list
-        axios.get(`http://127.0.0.1:8000/api/followers/${usersId}`).then((response)=>{
+        axios.get(`https://www.smedia.fun/api/followers/${usersId}`).then((response)=>{
           setFollowers(response.data)
           // console.log('followers',response.data)
         })

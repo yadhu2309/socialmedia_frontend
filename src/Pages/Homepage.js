@@ -78,13 +78,13 @@ function Homepage() {
 
   const handlePopoverOpen = (event,id) => {
     setAnchorEl(event.currentTarget);
-    axios.get(`http://127.0.0.1:8000/api/followers/${id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/followers/${id}`).then((response)=>{
       setFollowers(response.data)
     })
-    axios.get(`http://127.0.0.1:8000/api/followget/${id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/followget/${id}`).then((response)=>{
       setFollowing(response.data)
     })
-  axios.get(`http://127.0.0.1:8000/api/postget/${id}`).then((response)=>{
+  axios.get(`https://www.smedia.fun/api/postget/${id}`).then((response)=>{
       // 
       
       setPost(response.data)
@@ -92,7 +92,7 @@ function Homepage() {
       
       
   })
-  axios.get(`http://127.0.0.1:8000/api/profileImage/${id}`).then((response)=>{
+  axios.get(`https://www.smedia.fun/api/profileImage/${id}`).then((response)=>{
     setProfilePicture(response.data)
   })
   
@@ -138,11 +138,11 @@ function Homepage() {
  
   useEffect(()=>{
     
-    axios.get('http://127.0.0.1:8000/api/userlist').then((response)=>{
+    axios.get('https://www.smedia.fun/api/userlist').then((response)=>{
       setUserList(response.data)
     })
    
-    axios.get(`http://127.0.0.1:8000/api/profileImage/${user.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/profileImage/${user.id}`).then((response)=>{
       if(response.data.dp){
         setProfile(response.data.dp.replace('/media/profileImages/',''))
       }
@@ -154,17 +154,17 @@ function Homepage() {
       // console.log('userdetails',response.data)
       setUserDetails(response.data)
     })
-    axios.get('http://127.0.0.1:8000/api/post').then((response)=>{
+    axios.get('https://www.smedia.fun/api/post').then((response)=>{
           setPostLoop(response.data)
     })
-    axios.get(`http://127.0.0.1:8000/api/follow/${user.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/follow/${user.id}`).then((response)=>{
              console.log('haifollow',response.data);
              setFollow(response.data)
     })
     // check && navigate('/user/profile')
 
     //following
-    axios.get(`http://127.0.0.1:8000/api/followget/${user.id}`).then((response)=>{
+    axios.get(`https://www.smedia.fun/api/followget/${user.id}`).then((response)=>{
       setFollowingPost(response.data)
       console.log('following',response.data)
     })
@@ -183,7 +183,7 @@ function Homepage() {
 
   const handleFollow = (id)=>{
     console.log('followid',id)
-    axios.post(`http://127.0.0.1:8000/api/follow_check/${user.id}`,{
+    axios.post(`https://www.smedia.fun/api/follow_check/${user.id}`,{
       acc_uid:user.id,
       f_uid:id
     }).then((response)=>{
@@ -192,7 +192,7 @@ function Homepage() {
     })
   }
   const handleUnfollow = (id)=>{
-    axios.delete(`http://127.0.0.1:8000/api/unfollow/${id}/${user.id}`).then((response)=>{
+    axios.delete(`https://www.smedia.fun/api/unfollow/${id}/${user.id}`).then((response)=>{
       // console.log('success')
       setFollow(response.data)
     })

@@ -95,7 +95,7 @@ const[selectIndex,setSelectIndex]=useState()
       const roomCreation=(receiver_name,sender_name)=>{
         if(clients.current){clients.current.close()}
 
-         axios.post('http://127.0.0.1:8000/api/rooms',{
+         axios.post('https://www.smedia.fun/api/rooms',{
           room_name:receiver_name+sender_name,
           sender:sender_name,
           receiver:receiver_name
@@ -149,7 +149,7 @@ useEffect(()=>{
    
   clients.current = new W3CWebSocket(`ws://127.0.0.1:8000/ws/${rooms.room_name}/`)
   // setClient(clients)
-  rooms&&axios.get(`http://127.0.0.1:8000/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
        console.log(clients.current,"hey",rooms.room_name)
