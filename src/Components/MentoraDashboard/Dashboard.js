@@ -490,7 +490,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                   {props.value==='mentorlist'?<h4>Mentors</h4>:<h4>Users</h4>}
                   {props.value==='mentorlist'?
                   mentorlist && mentorlist.map((data,index)=>{
-                    console.log('datament',data.id)
+                  
                     let imageProf=data.profile
                     if(data.id !== mentorLog.id){
                     return(
@@ -508,7 +508,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                         cursor:'pointer'
                          }} >
                             
-     {imageProf? <img src={require('../../'+imageProf)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+     {imageProf? <img src={imageProf} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
      </Box>
                         <span>{data.username}</span>
                         </div>
@@ -535,7 +535,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                              cursor:'pointer'
                               }} >
                                  
-          {data.profile? <img src={require('../../'+data.profile)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+          {data.profile? <img src={data.profile} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
           </Box>
                              <span>{data.username}</span>
                              </div>
@@ -564,7 +564,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                   {props.value==='mentorlist'?
                     connection && connection.map((data,index)=>{
                       let imageProf=data.profile
-                      console.log('data90',data)
+                     
                       return(
                         
                         <div key={index} style={{paddingRight:"5px",display:'flex',justifyContent:'space-between',alignItems:'center',border:'1px solid',cursor:'pointer'}}>
@@ -578,7 +578,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                          cursor:'pointer'
                           }} >
                              
-      {imageProf? <img src={require('../../'+imageProf)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+      {imageProf? <img src={imageProf} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
       </Box>
                          <span>{data.username}</span>
                          </div>
@@ -587,7 +587,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                       )
 
                     }):v_users && v_users.map((data,index)=>{
-                      console.log('mentor list users',data)
+                     
                       return(
                         <div key={index} style={{paddingRight:"5px",display:'flex',justifyContent:'space-between',alignItems:'center',border:'1px solid',cursor:'pointer'}}>
                         <div style={{display:"flex",alignItems:'center'}}> <Box sx={{  bgcolor: 'white',
@@ -600,7 +600,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                          cursor:'pointer'
                           }} >
                              
-      {data.user_image.length===1&&data.user_image? <img src={require('../../'+data.user_image[0].dp.replace('/media/',''))} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+      {data.user_image.length===1&&data.user_image? <img src={data.user_image[0].dp} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
       </Box>
                          <span>{data.username}</span>
                          </div>
@@ -641,7 +641,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                         cursor:'pointer'
                          }} >
                             
-     {selectUser.dp? <img src={require('../'+selectUser.dp)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+     {selectUser.dp? <img src={selectUser.dp} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
         </Box>}
                       <span style={{fontWeight:'bold'}}>{selectUser && selectUser.username}</span>
                 </div>
@@ -672,7 +672,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                                cursor:'pointer',
                        }} >
                                    
-            {data.profile? <img src={require('../../'+data.profile)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+            {data.profile? <img src={data.profile} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
             </Box>
                                <span>{data.username}</span>
                                </div>
@@ -707,7 +707,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                           select_user(index);
                         }}>
                            
-    {data.user_image.length===1&&data.user_image? <img src={require('../../'+data.user_image[0].dp.replace('/media/',''))} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+    {data.user_image.length===1&&data.user_image? <img src={data.user_image[0].dp} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
     </Box>
                        <span>{data.username}</span>
                        </div>
@@ -719,7 +719,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                 {mentorstate?
                 connection && connection.map((data,index)=>{
                   let imageProf=data.profile
-                  console.log('data90',data)
+               
                   return(
                     
                     <div key={index} style={{display:'flex',justifyContent:'space-between',alignItems:'center',cursor:'pointer'}}>
@@ -744,7 +744,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                         select_user(index);
                       }} >
                          
-  {imageProf? <img src={require('../../'+imageProf)} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
+  {imageProf? <img src={imageProf} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
   </Box>
                      <span>{data.username}</span>
                      </div>
@@ -824,7 +824,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
             , }} 
             
              >
-                            {profile?<img src={require('../../profileImages/'+profile)} width='100%' height='100%'/>: <Avatar sx={{width:'100%',height:'100%'}}/>}  
+                            {profile?<img src={profile} width='100%' height='100%'/>: <Avatar sx={{width:'100%',height:'100%'}}/>}  
                                 </Box>
         </div>
         <div style={{display:'flex',justifyContent:'center'}}>
