@@ -350,7 +350,7 @@ personalstate && setPersonalstate(false)
     //users
     axios.get('https://www.smedia.fun/api/users').then((response)=>{
         setUsers(response.data)
-        console.log('users data',response.data)
+        // console.log('users data',response.data)
     })
 
     //verifeid users
@@ -360,9 +360,9 @@ personalstate && setPersonalstate(false)
 
     axios.get(`https://www.smedia.fun/api/profileImage/${mentorLog.id}`).then((response)=>{
       // 
-      console.log(response.data)
+      // console.log(response.data)
      
-      setProfile(response.data.dp.replace('/media/profileImages/',''))
+      setProfile(response.data.dp)
       // console.log("ri",profile);
       setBool(true)
       // dp=response.data.dp.replace('/media/profileImages/','')
@@ -380,7 +380,7 @@ personalstate && setPersonalstate(false)
 
 axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((response)=>{
           setConnection(response.data)
-          console.log('following',response.data)
+          // console.log('following',response.data)
         })
 
   },[f_bool])
@@ -427,7 +427,7 @@ axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((respons
                  <Box sx={{ ...commonStyles1, borderRadius: '50%',cursor:"pointer",overflowY:'hidden'}} onClick={handleClick} aria-describedby={id}
             
              >
-                            {profile?<LazyLoadImage  src={require('../../profileImages/'+profile)} style={{width:'100%',height:'100%'}} />: <Avatar sx={{width:'100%',height:'100%'}}/>}  
+                            {profile?<LazyLoadImage  src={profile} style={{width:'100%',height:'100%'}} />: <Avatar sx={{width:'100%',height:'100%'}}/>}  
                                 </Box>
             </IconButton>
           </Toolbar>
