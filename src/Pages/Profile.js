@@ -12,7 +12,7 @@ import Pop from '../Components/Pop/Pop'
 import ModalEdit from '../Components/Modal/Modal'
 
 //backdrop
-import Backdrop from '@mui/material/Backdrop';
+  import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -153,14 +153,14 @@ const dislike = (id,uid)=>{
     
 
     //    setPostDetailsImage({one:'',two:'',three:''})
-    verify &&!nav&& setVerifyImage(loop[id].image.replace('/media/posts/',''))
+    verify &&!nav&& setVerifyImage(loop[id].image)
     verify &&!nav && console.log('post detail when verify',loop[id])
      verify &&!nav&& setPost_Details(loop[id])
 
      //saved post
     verify && nav && setPost_Details(savedPost[id])
      verify && nav && console.log('verify nav',savedPost[id])
-    verify&&   nav && setVerifyImage(savedPost[id].image.replace('posts/',''))
+    verify&&   nav && setVerifyImage(savedPost[id].image)
 setForuserSave(savedPost[id])
       // console.log("postdetails",a[id]); setPostDetails(a[id])
    
@@ -172,15 +172,15 @@ setForuserSave(savedPost[id])
         //    console.log('onclickimage',a[id].image_one)
         if(a[id].image_one){
            const item = {
-            one:a[id].image_one.replace('/media/images/',''),
+            one:a[id].image_one,
             
            
         }
         setPostDetailsImage(item)
     }
     if(a[id].image_one && a[id].image_two){ const item = {
-        one:a[id].image_one.replace('/media/images/',''),
-        two:a[id].image_two.replace('/media/images/',''),
+        one:a[id].image_one,
+        two:a[id].image_two,
         
        
     }
@@ -189,9 +189,9 @@ setForuserSave(savedPost[id])
         if(a[id].image_one && a[id].image_two && a[id].image_three){
             const item = {
                 
-                one:a[id].image_one.replace('/media/images/',''),
-                two:a[id].image_two.replace('/media/images/',''),
-                three:a[id].image_three.replace('/media/images/','')
+                one:a[id].image_one,
+                two:a[id].image_two,
+                three:a[id].image_three
                
             }
             setPostDetailsImage(item)
@@ -328,24 +328,7 @@ const check_saved=(id)=>{
 
         word ==='saved' &&
          setNav(true)
-        //  setColour({post:'none',saved:'1px solid white'})
-        // if (!nav){
-        //     const item={
-            
-        //         post:'1px solid white',
-        //         saved:'none'
-    
-    
-        //     };
-        //     setColour(item)}else{
-        //         const item={
-        //             post:'none',
-        //             saved:'1px solid white'
-
-        //         }
-        //         setColour(item)
-        //     }
-       
+        
        
     }
     {followers && console.log('followcount',followers.length)}
@@ -354,8 +337,10 @@ const check_saved=(id)=>{
               <div style={{border:'1px solid white',
             // position:'fixed'
             }}>
+             
 
-                <Grid item xs={12} sx={{display:'flex',
+                <Grid item xs={12}  sx={{
+                  display:'flex',
                 justifyContent:'center',
                 // marginBottom:'1em',
                 margin:'auto',
@@ -366,10 +351,11 @@ const check_saved=(id)=>{
                 borderBottomLeftRadius:'5px',
                 borderBottomRightRadius:'5px',
                 
+                
                 // border:'1px solid white'
                 }}
                 >
-                    <Grid key='G1' item  sx={{marginRight:'5em'}}>
+                    <Grid key='G1' item md={12} sx={{marginRight:'5em'}}>
                     <Box sx={{  bgcolor: 'white',
                         borderColor: 'text.primary',
                         m: 1,
@@ -379,7 +365,7 @@ const check_saved=(id)=>{
                         overflowY:'hidden',
                          }} >
                             
-                        {/* {console.log('helo',props.mem)} */}
+                       
                         <img style={{display:'none'}} src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
        {bool?isLoading ?
       <Backdrop
@@ -543,7 +529,7 @@ const check_saved=(id)=>{
                 <Grid container spacing={2} direction="row"  justify="center" style={{margin:'auto',width:'97%',paddingLeft:'5em',paddingTop:'1em',paddingBottom:'5em'}} alignItems="center" >
                 {savedPost?savedPost.map((data,index)=>{
                       // img = data.image.replace('/media/posts/','')
-                      //  console.log("saved post by user",data)
+                       console.log("saved post by user",data)
                     // console.log("o",l)
                     return(
                         <div key={index} onClick={()=>{

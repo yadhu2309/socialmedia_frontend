@@ -6,6 +6,8 @@ import Modal from '@mui/material/Modal';
 
 import axios from 'axios'
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -48,9 +50,12 @@ const style = {
   };
 
 export default function BasicModal(props) {
-//   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => setOpen(true);
-   const handleClose = () => {setOpenModal(false);
+
+  //image loading
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const handleClose = () => {setOpenModal(false);
+    setIsLoading(true)
     props.like&&props.setLike(false)
 props.save&&props.setSave(false)};
 let{user,usersId,setUsersId,openModal,setOpenModal} = React.useContext(AuthContext)
@@ -99,18 +104,33 @@ const saved =()=>{
            width:props.modalContent==='post'?'60%':300,paddingTop:'4em'}}>
 {props.verify && console.log('postdetails when verify',props.post_details)}
           {/* for identifying the user is verified */}
+          {/* <Backdrop
+       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+       open
+       
+       >
+       <CircularProgress color="inherit" />
+     </Backdrop> */}
+
           {props.verify?
           
           //  <Carousel veri={verify} imgvalone={verifyimage}/>
           props.verifyimage && 
-          <LazyLoadImage
+         <> <img style={{display:'none'}} src={props.verifyimage} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
+         {isLoading? <Backdrop
+       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+       open
+       
+       >
+       <CircularProgress color="inherit" />
+     </Backdrop>:<LazyLoadImage
           // className="d-block w-100"
           width='100%'
            height={300}
-           
+           onLoad={() => setIsLoading(false)}
           src={props.verifyimage}
           alt="First slide"
-        />
+        />}</>
            : props.foruser==='foruser'
            ?
            <LazyLoadImage

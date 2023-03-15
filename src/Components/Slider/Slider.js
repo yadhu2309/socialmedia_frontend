@@ -83,7 +83,7 @@ export default function Slider(props) {
                                 {data.user_image[0]? 
                                 <img 
                                 src={
-                                  require('../../profileImages/'+data.user_image[0].dp.replace('/media/profileImages/',''))
+                                  data.user_image[0].dp
                                  }
                                  width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/> }
                                 </Box>

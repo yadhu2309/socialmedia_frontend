@@ -241,7 +241,7 @@ function Homepage() {
                                 <h4 style={{color:'#FFFFFF',cursor:'pointer',fontFamily:'sans-serif',fontWeight:'bold',}} >{ userDetails ? userDetails.username:user.username}</h4>
                                 {/* <h6 style={{color:'#FFFFFF',fontFamily:'sans-serif'}}>{ userDetails && userDetails.first_name}{userDetails && userDetails.last_name}</h6> */}
                                 </div>
-                               {googleprofile && <img scr={''+googleprofile.googleprofile} alt={googleprofile.googleprofile}/>}
+                               {googleprofile && <img scr={googleprofile.googleprofile} alt={googleprofile.googleprofile}/>}
 
 
               </div>
@@ -456,7 +456,7 @@ function Homepage() {
         borderBottom:'1px solid ',
         padding:'10px',display:'flex',overflowY:'hidden'}}>
         <Box sx={{ ...commonStyles2, borderRadius: '50%',cursor:'pointer',margin:0 ,border:'none',overflowY:'hidden'}} >
-          {profilePicture ? <LazyLoadImage src={require('../profileImages/'+profilePicture.dp.replace('/media/profileImages/',''))}
+          {profilePicture ? <LazyLoadImage src={profilePicture.dp}
       width='100%' height='100%'
       alt="Image Alt"
     />: 
