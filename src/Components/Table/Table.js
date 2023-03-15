@@ -183,7 +183,7 @@ export default function StickyHeadTable(props) {
 
       </Typography>:
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {console.log(mentorDetails)}
+            {/* {console.log(mentorDetails)} */}
  Name:{mentorDetails.first_name} {mentorDetails.last_name}<br/>
         Username:{mentorDetails.username}<br/>
         Phone:{mentorDetails.phone}<br/>

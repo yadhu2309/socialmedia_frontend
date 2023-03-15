@@ -16,7 +16,7 @@ function UncontrolledExample(props) {
           width='100%'
            height={300}
            
-          src={require('../../posts/'+props.imgvalone)}
+          src={props.imgvalone}
           alt={props.veri?'':"First slide"}
         />
         
@@ -26,7 +26,7 @@ function UncontrolledExample(props) {
           // className="d-block w-100"
           width='100%'
            height={300}
-          src={require('../../images/'+props.imgvalone)}
+          src={props.imgvalone}
           alt="First slide"
         />
         
@@ -34,12 +34,12 @@ function UncontrolledExample(props) {
       }
       {props.imgvaltwo && 
       <Carousel.Item>
-        {console.log('carousel10',props.imgval)}
+        {/* {console.log('carousel10',props.imgval)} */}
         <LazyLoadImage
        
           width='100%'
            height={300}
-          src={require('../../images/'+props.imgvaltwo)}
+          src={props.imgvaltwo}
           alt="Second slide"
         />
 
@@ -52,7 +52,7 @@ function UncontrolledExample(props) {
           // className="d-block w-100"
           width='100%'
           height={300}
-          src={require('../../images/'+props.imgvalthree)}
+          src={props.imgvalthree}
           alt="Third slide"
         />
 

@@ -47,7 +47,7 @@ const[error,setError] = useState()
     const makeChange =(event)=>{
         const {name,value} = event.target;
         if(event.target.value===''){
-            console.log('pls enter')
+            // console.log('pls enter')
             setError('Please type something')
         }else{
             setError('')
@@ -70,7 +70,7 @@ const[error,setError] = useState()
         }
         setMoreImageFile(items)
         setMoreImage(item)
-        console.log("one",item.one)
+        // console.log("one",item.one)
         return moreImage;
     }
     if(!moreImage.two){
@@ -85,7 +85,7 @@ const[error,setError] = useState()
         }
         setMoreImageFile(items)
         setMoreImage(item)
-        console.log("two",item.two)
+        // console.log("two",item.two)
         return moreImage;
     }  
    
@@ -119,10 +119,10 @@ const[error,setError] = useState()
     
 
     const handleCreate =(e) =>{
-        console.log('iamready')
-        console.log('iamuser',user.id)
+        // console.log('iamready')
+        // console.log('iamuser',user.id)
         // console.log(imageName);
-        console.log("moreOne",moreImageFile.two)
+        // console.log("moreOne",moreImageFile.two)
         const uploadImage = new FormData()
         uploadImage.append('image_one',imageFile)
         uploadImage.append('image_two',moreImageFile.one)
@@ -133,7 +133,7 @@ const[error,setError] = useState()
 
         
         axios.post('https://www.smedia.fun/api/proposal',uploadImage).then((response)=>{
-            console.log("received",response.data);
+            // console.log("received",response.data);
             setImageFile('')
             setMoreImageFile({one:'',two:''})
             setValue({title:'',describe:''})
@@ -145,14 +145,14 @@ const[error,setError] = useState()
     }
 
     const handleClick = ()=>{
-        console.log(image)
+        // console.log(image)
         setNext(true)
     }
     // {console.log('m',check)}
  const handlePost=(e)=>{
     e.preventDefault()
     if(val.title===''){
-        console.log('plsnter')
+        // console.log('plsnter')
         setError('Please type something')
 
     }else{

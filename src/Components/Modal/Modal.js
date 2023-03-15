@@ -79,7 +79,7 @@ const[error,setError] = React.useState({first_name:'',
   const makeChange = (event)=>{
     const {name,value} = event.target;
     setValue(prevState =>({...prevState,[name]:value}))
-    console.log("iamval",val)
+    // console.log("iamval",val)
    
 }
 
@@ -153,7 +153,7 @@ const requestSubmit =()=>{
     uid:user.id,
    
   }).then((response)=>{
-    console.log("request",response.data)
+    // console.log("request",response.data)
     setValue({first_name:'',
   last_name:'',
   email:'',phone:'',
@@ -174,7 +174,7 @@ handleClose();
 
   const handleImage=(e)=>{
     setImage(URL.createObjectURL(e.target.files[0]))
-    console.log('image',e.target.files[0])
+    // console.log('image',e.target.files[0])
     setCheck(true)
     setFilename(e.target.files[0])
 
@@ -187,7 +187,7 @@ handleClose();
     props.identity==='mentor'?uploadImage.append('uid',mentorLog.id):uploadImage.append('uid',user.id)
 
     axios.post(`https://www.smedia.fun/api/changeprofileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
-      console.log(response.data)
+      // console.log(response.data)
       setFilename('')
       setImage('')
       handleClose()
@@ -204,7 +204,7 @@ handleClose();
     props.identity==='mentor'?uploadImage.append('uid',mentorLog.id):uploadImage.append('uid',user.id)
 
     axios.post(`https://www.smedia.fun/api/profileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
-      console.log(response.data)
+      // console.log(response.data)
       setFilename('')
       setImage('')
       handleClose()

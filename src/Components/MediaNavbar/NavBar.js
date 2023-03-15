@@ -162,10 +162,10 @@ const[messages,setMessages] = useState([])
      receiver:user.username
     }).then((response)=>{
      if(response.status === 200){
-       console.log('response 200',response)
+      //  console.log('response 200',response)
        setRooms(response.data)
      }
-     console.log('successfully created',response.data[0].room_name)
+    //  console.log('successfully created',response.data[0].room_name)
       setRooms(response.data[0])
      
     })}
@@ -197,15 +197,15 @@ const[messages,setMessages] = useState([])
         if(clients.current) {
     
           clients.current.onopen = () => {
-      console.log("WebSocket Client Connected");
+      // console.log("WebSocket Client Connected");
       }}
-    console.log('after send',clients.current)
+    // console.log('after send',clients.current)
     
     
       clients.current.onmessage=(message)=>{
-       console.log('message whne connect',message)
+      //  console.log('message whne connect',message)
        let m = JSON.parse(message.data)
-       console.log('m',m)
+      //  console.log('m',m)
         setMessages(messages=>[...messages,m])
      
       }
@@ -250,7 +250,7 @@ const[messages,setMessages] = useState([])
 
     axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
       setNotification(respone.data)
-      console.log('setnotification',respone.data)
+      // console.log('setnotification',respone.data)
 })
 
   },[notify])
@@ -258,7 +258,7 @@ const[messages,setMessages] = useState([])
   const handleNotification=()=>{
     axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
             setNotification(respone.data)
-            console.log('setnotification',respone.data)
+            // console.log('setnotification',respone.data)
     })
   }
 

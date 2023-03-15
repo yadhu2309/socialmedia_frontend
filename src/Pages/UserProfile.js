@@ -78,13 +78,13 @@ function UserProfile() {
 
     // like
     const Like = (id,uid)=>{
-      console.log('hello',id,'user',uid)
+      // console.log('hello',id,'user',uid)
      
       axios.post(`https://www.smedia.fun/api/like/${id}/${user.id}`,{
       pid:id,
       user_who_like:uid,
       }).then((response)=>{
-        console.log('like response',response.data)
+        // console.log('like response',response.data)
         setLike(true);
         setLikeCount(likeCount+1)
       })
@@ -141,7 +141,7 @@ const handlePostDetails = (id)=>{
       axios.get(`https://www.smedia.fun/api/like_show/${id}/${user.id}`).then((response)=>{
           
           
-       console.log('userlike',response.data)
+      //  console.log('userlike',response.data)
            if(response.status === 200){
              setLike(true)
             //  setLikeCount(response.data)
@@ -151,7 +151,7 @@ const handlePostDetails = (id)=>{
           console.log('count',response.data)
           setLikeCount(response.data.length)
          }).catch((error)=>{
-           console.log('there might be error')
+          //  console.log('there might be error')
          })
    
         
@@ -173,7 +173,7 @@ const handlePostDetails = (id)=>{
 
  usersId &&   axios.get(`https://www.smedia.fun/api/postget/${usersId}`).then((response)=>{
       // 
-      console.log('kio',response.data)
+      // console.log('kio',response.data)
       setLoop(response.data)
       setLoopBool(true)
       
@@ -181,7 +181,7 @@ const handlePostDetails = (id)=>{
   })
   axios.get(`https://www.smedia.fun/api/userCheck/${user.id}`).then((response)=>{
             // 
-            console.log('kio',response.data)
+            // console.log('kio',response.data)
             setVerify(response.data.verified)
             
             
@@ -217,7 +217,7 @@ const handlePostDetails = (id)=>{
                         overflowY:'hidden',
                          }} >
                             
-                * {console.log('helo',profile)}
+                {/* * {console.log('helo',profile)} */}
      {bool && profile ? <img src={profile} width='100%' height='100%'/>:<Avatar sx={{width:'100%',height:'100%'}}/>}
         </Box>
           </Grid>
@@ -320,7 +320,7 @@ const handlePostDetails = (id)=>{
             width:'60%',
             paddingTop:'4em'}}>
            {/* <Carousel imgvalone={postdetails}/> */}
-           {postdetails && console.log('imagpost',postdetails)}
+           {/* {postdetails && console.log('imagpost',postdetails)} */}
           {
               postdetails && 
               <LazyLoadImage
@@ -364,7 +364,8 @@ const handlePostDetails = (id)=>{
       </div>
 
  {/* pppppppppppppp */}
- {postOtherDetails && postOtherDetails.title }{postOtherDetails && console.log('postotherdetails',postOtherDetails)}
+ {postOtherDetails && postOtherDetails.title }
+ {/* {postOtherDetails && console.log('postotherdetails',postOtherDetails)} */}
     </div>
  {/* <ThumbUpAltIcon/> */}
  <div style={{
@@ -375,7 +376,7 @@ const handlePostDetails = (id)=>{
  alignItems:'center',
  justifyContent:'space-between',
  paddingLeft:'5px',paddingRight:'5px'}}>
-  {console.log('like',like)}
+  {/* {console.log('like',like)} */}
   <div>
     {
   like ?
@@ -419,7 +420,7 @@ width:'100%',marginTop:"1.7em"}}>
         {
       identify? followers && followers.map((data)=>{
         let imageProf = data.dp
-        console.log('imageProf',data)
+        // console.log('imageProf',data)
         return(<>
           <div style={{display:'flex'}}
           onClick={()=>usersDetailhandle(data.acc_uid)}>
@@ -443,7 +444,7 @@ width:'100%',marginTop:"1.7em"}}>
         :
         following && following.map((data)=>{
           let imageProf = data.dp
-        console.log('imageProf',imageProf)
+        // console.log('imageProf',imageProf)
         return(<>
           <div style={{display:'flex'}}
           onClick={()=>usersDetailhandle(data.f_uid)}>

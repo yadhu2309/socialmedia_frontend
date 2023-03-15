@@ -116,13 +116,13 @@ function Profile(props) {
   
 // like
 const Like = (id,uid)=>{
-  console.log('hello',id,'user',uid)
+  // console.log('hello',id,'user',uid)
  
   axios.post(`https://www.smedia.fun/api/like/${id}/${user.id}`,{
   pid:id,
   user_who_like:uid,
   }).then((response)=>{
-    console.log('like response',response.data)
+    // console.log('like response',response.data)
     setLike(true);
     setLikeCount(likeCount+1)
   })
@@ -154,12 +154,12 @@ const dislike = (id,uid)=>{
 
     //    setPostDetailsImage({one:'',two:'',three:''})
     verify &&!nav&& setVerifyImage(loop[id].image)
-    verify &&!nav && console.log('post detail when verify',loop[id])
+    // verify &&!nav && console.log('post detail when verify',loop[id])
      verify &&!nav&& setPost_Details(loop[id])
 
      //saved post
     verify && nav && setPost_Details(savedPost[id])
-     verify && nav && console.log('verify nav',savedPost[id])
+    //  verify && nav && console.log('verify nav',savedPost[id])
     verify&&   nav && setVerifyImage(savedPost[id].image)
 setForuserSave(savedPost[id])
       // console.log("postdetails",a[id]); setPostDetails(a[id])
@@ -216,13 +216,13 @@ const check_like=(id)=>{
         //  setLikeCount(response.data)
        }
      }).catch((error)=>{
-      console.log('console.log check_like ',error)
+      // console.log('console.log check_like ',error)
      })
      axios.get(`https://www.smedia.fun/api/countLike/${id}`).then((response)=>{
-      console.log('count',response.data)
+      // console.log('count',response.data)
       setLikeCount(response.data.length)
      }).catch((error)=>{
-       console.log('there might be error')
+      //  console.log('there might be error')
      })
 
     
@@ -241,7 +241,7 @@ const check_saved=(id)=>{
         //  setLikeCount(response.data)
        }
      }).catch((error)=>{
-      console.log('console.log check_like ',error)
+      // console.log('console.log check_like ',error)
      })
 
 }
@@ -331,7 +331,7 @@ const check_saved=(id)=>{
         
        
     }
-    {followers && console.log('followcount',followers.length)}
+    // {followers && console.log('followcount',followers.length)}
   return (
     <div className='homepage'>
               <div style={{border:'1px solid white',
@@ -529,7 +529,7 @@ const check_saved=(id)=>{
                 <Grid container spacing={2} direction="row"  justify="center" style={{margin:'auto',width:'97%',paddingLeft:'5em',paddingTop:'1em',paddingBottom:'5em'}} alignItems="center" >
                 {savedPost?savedPost.map((data,index)=>{
                       // img = data.image.replace('/media/posts/','')
-                       console.log("saved post by user",data)
+                      //  console.log("saved post by user",data)
                     // console.log("o",l)
                     return(
                         <div key={index} onClick={()=>{

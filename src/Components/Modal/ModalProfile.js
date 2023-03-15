@@ -102,7 +102,7 @@ const saved =()=>{
 
             
            width:props.modalContent==='post'?'60%':300,paddingTop:'4em'}}>
-{props.verify && console.log('postdetails when verify',props.post_details)}
+{/* {props.verify && console.log('postdetails when verify',props.post_details)} */}
           {/* for identifying the user is verified */}
           {/* <Backdrop
        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -163,7 +163,7 @@ const saved =()=>{
                          }} >
                             
                         {/* {console.log('helo',props.mem)} */}
-                        {console.log('profile modal',props.profile)}
+                        {/* {console.log('profile modal',props.profile)} */}
      {props.nav?
      props.verify?
       props.post_details && props.post_details.profile?
@@ -210,7 +210,10 @@ const saved =()=>{
   <ThumbUpAltIcon
   //  onClick={dislike}
     sx={{color:'#AF34BA',cursor:'pointer'}}
-    onClick={props.nav?()=>{props.dislike(props.post_details.pid);console.log('nav is true')}:()=>{props.dislike(props.post_details.id)}
+    onClick={props.nav?()=>{props.dislike(props.post_details.pid);
+      // console.log('nav is true')
+    }
+      :()=>{props.dislike(props.post_details.id)}
     }
     />
     :
@@ -293,7 +296,7 @@ const saved =()=>{
               :
               props.following && props.following.map((data)=>{
                 let imageProf = data.dp
-             console.log('imagefollowing',data)
+            //  console.log('imagefollowing',data)
               return(<>
                 <div style={{display:'flex'}}
                  onClick={()=>props.usersDetailhandle(data.f_uid)}
@@ -309,7 +312,9 @@ const saved =()=>{
                       }} >
                           
             {
-            imageProf? <>{console.log('bucket',imageProf)}
+            imageProf? <>{
+            // console.log('bucket',imageProf)
+            }
             <img src={imageProf}
              width='100%' height='100%'/></>
              :<Avatar sx={{width:'100%',height:'100%'}}/>

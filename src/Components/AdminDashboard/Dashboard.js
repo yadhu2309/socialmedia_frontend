@@ -87,14 +87,14 @@ function DashboardContent(props) {
     setOpen(!open);
   };
 const handleDetail=(id)=>{
-  console.log('men',mentor[id])
+  // console.log('men',mentor[id])
   setMentorDetails(mentor[id])
-  console.log('menlast',mentor[id].last_name)
+  // console.log('menlast',mentor[id].last_name)
 // arr.push(mentor[id].user)
-console.log('he;o',mentor[id].user);
+// console.log('he;o',mentor[id].user);
 setDetail(mentor[id].user[0])
 mentor[id].user.map((data)=>{
-  console.log(data.uid);
+  // console.log(data.uid);
 })
 
 }
@@ -107,11 +107,11 @@ const requestDetailshandle=(id)=>{
 
 
   const approveRequest = (id)=>{
-    console.log("f",id);
+    // console.log("f",id);
     axios.put(`https://www.smedia.fun/api/approve_user/${id}`,{
       approve:true,
     }).then((response)=>{
-      console.log('requestverify',response.data)
+      // console.log('requestverify',response.data)
       setRequests(response.data)
     })
   }
@@ -134,7 +134,7 @@ const requestDetailshandle=(id)=>{
               pr: '24px', // keep right padding when drawer closed
             }}
           >
-            {console.log('det',detail)}
+            {/* {console.log('det',detail)} */}
             <IconButton
               edge="start"
               color="inherit"
@@ -225,7 +225,7 @@ const requestDetailshandle=(id)=>{
             // <HorizontalCard />
           
             :''}
-            {console.log("addwe",props.value)}
+            {/* {console.log("addwe",props.value)} */}
             {props.value === 'add'?<FormMentors/>:''}
             {props.value==='requests'?
          

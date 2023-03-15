@@ -14,6 +14,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { Divider } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 
 
 
@@ -24,14 +27,18 @@ export default function FormMentors() {
   const[error,setError] = React.useState({eusername:'',epassword:'',eemail:'',
   elastname:'',efirstname:'',ephone:'',eaddress:'',ecountry:'',estate:''})
 //show password
+const[show,setShow]=React.useState(true)
+
 const inputRef = React.useRef(null);
 const showPassword = ()=>{
 //  inputRef.current.focus()
 if(inputRef.current.type==='password'){
   inputRef.current.type='text'
+  setShow(false)
 }
 else{
   inputRef.current.type='password'
+  setShow(true)
 }
  
 }
@@ -268,7 +275,7 @@ if(Object.keys(content).length === 0){
       
 
     }).then((response)=>{
-      console.log(response.data);
+      // console.log(response.data);
       setValue({email:'',phone:'',lastname:'',firstname:'',username:'',password:'',address:'',state:'',country:''})
     })
   }
@@ -278,7 +285,7 @@ if(Object.keys(content).length === 0){
   return (
    
     <ThemeProvider theme={theme}>
-      {console.log("error",error)}
+      {/* {console.log("error",error)} */}
       <Container component="main" maxWidth="xs" sx={{ border:1,backgroundColor:'#D9D9D9'}}>
         <CssBaseline />
         <Box
@@ -411,7 +418,7 @@ if(Object.keys(content).length === 0){
                 {error.ephone&&<span style={{color:'red'}}>{error.ephone}</span>}
               </Grid>
               <Grid item xs={12}>
-                <TextField
+               <div style={{display:'flex',alignItems:'center'}}> <TextField
                 inputRef={inputRef}
                   required
                   variant="filled"
@@ -425,7 +432,8 @@ if(Object.keys(content).length === 0){
                   value={val.password}
                  
                 />
-                <input type="checkbox" onClick={showPassword}/>show password
+                {show? <VisibilityIcon onClick={showPassword}/>:
+                <VisibilityOffIcon onClick={showPassword}/>}</div>
                 {error.epassword&&<span style={{color:'red'}}>{error.epassword}</span>}
               </Grid>
               {/* <Grid item xs={12}>

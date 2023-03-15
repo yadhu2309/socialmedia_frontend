@@ -158,7 +158,7 @@ function Homepage() {
           setPostLoop(response.data)
     })
     axios.get(`https://www.smedia.fun/api/follow/${user.id}`).then((response)=>{
-             console.log('haifollow',response.data);
+            //  console.log('haifollow',response.data);
              setFollow(response.data)
     })
     // check && navigate('/user/profile')
@@ -166,7 +166,7 @@ function Homepage() {
     //following
     axios.get(`https://www.smedia.fun/api/followget/${user.id}`).then((response)=>{
       setFollowingPost(response.data)
-      console.log('following',response.data)
+      // console.log('following',response.data)
     })
 
     //news api
@@ -182,12 +182,12 @@ function Homepage() {
   }
 
   const handleFollow = (id)=>{
-    console.log('followid',id)
+    // console.log('followid',id)
     axios.post(`https://www.smedia.fun/api/follow_check/${user.id}`,{
       acc_uid:user.id,
       f_uid:id
     }).then((response)=>{
-             console.log('followdone',response.data)
+            //  console.log('followdone',response.data)
             setFollow(response.data)
     })
   }
@@ -258,7 +258,7 @@ function Homepage() {
                 followArray.push(data.f_uid)
               })}
               {postLoop? postLoop.map((data,index)=>{
-                 console.log('data',data)
+                //  console.log('data',data)
                 if(followArray && followArray.includes(data.id)){
                 return(
                   data.post_user.map((img,index)=>{
@@ -353,7 +353,7 @@ function Homepage() {
                             if(user.username !== data.username ){
 
                             //  data.user_image[0] && 
-                            console.log('iqml', data)
+                            // console.log('iqml', data)
                             
                             // l=data.user_image[0].dp.replace('/media/profileImages/','')
                             return(

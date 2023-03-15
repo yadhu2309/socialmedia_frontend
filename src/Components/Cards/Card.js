@@ -103,11 +103,11 @@ const[messages,setMessages] = React.useState([])
      receiver:'a'
     }).then((response)=>{
      if(response.status === 200){
-       console.log('response 200',response)
+      //  console.log('response 200',response)
        setRooms(response.data)
     //  rooms=response.data
      }
-     console.log('successfully created',response.data[0].room_name)
+    //  console.log('successfully created',response.data[0].room_name)
       // rooms = response.data[0]
       setRooms(response.data[0])
      
@@ -115,7 +115,7 @@ const[messages,setMessages] = React.useState([])
 
     //send messages
     const sendMessage=()=>{
-      console.log('iam clie',clients.current)
+      // console.log('iam clie',clients.current)
       clients.current.send(JSON.stringify({
         type:'chat_message',
         text:`${user.username} liked your post`,
@@ -218,7 +218,7 @@ const[messages,setMessages] = React.useState([])
       user_who_save:user.id,
     }).then((response)=>{
       setSave(true)
-      console.log('response.data',response.data)
+      // console.log('response.data',response.data)
     })
 
    }
@@ -230,17 +230,17 @@ const[messages,setMessages] = React.useState([])
    }
 
   const Like = (id,uid)=>{
-    console.log('hello',id,'user',uid)
+    // console.log('hello',id,'user',uid)
 //room creation
 
     //websocket connection
     clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${props.username}`)
 
-    console.log(clients.current,"hey")
+    // console.log(clients.current,"hey")
         if(clients.current) {
     
           clients.current.onopen = () => {
-      console.log("WebSocket Client Connected");
+      // console.log("WebSocket Client Connected");
       }}
   
      
@@ -255,9 +255,9 @@ const[messages,setMessages] = React.useState([])
       sendMessage()
 
       clients.current.onmessage=(message)=>{
-        console.log('message whne connect',message)
+        // console.log('message whne connect',message)
         let m = JSON.parse(message.data)
-        console.log('m',m)
+        // console.log('m',m)
          setMessages(messages=>[...messages,m])
       
        }
@@ -296,26 +296,26 @@ const[messages,setMessages] = React.useState([])
     setLike(true)
   }
     }).catch((error)=>{
-      console.log('there might be error')
+      // console.log('there might be error')
     })
 
     // to check saved or not
 
     axios.get(`https://www.smedia.fun/api/saved/${props.postId}/${user.id}`).then((response)=>{
-      console.log('saveme',response.data);
+      // console.log('saveme',response.data);
       if(response.status == 200){
     setSave(true)
   }
     }).catch((error)=>{
-      console.log('there might be error')
+      // console.log('there might be error')
     })
 
     axios.get(`https://www.smedia.fun/api/countLike/${props.postId}`).then((response)=>{
-      console.log('count',response.data)
+      // console.log('count',response.data)
      setLikeCount(response.data.length)
      setLikeCountData(response.data)
     }).catch((error)=>{
-      console.log('there might be error')
+      // console.log('there might be error')
     })
 
   },[])
@@ -368,7 +368,7 @@ const[messages,setMessages] = React.useState([])
         }
         
       />
-   {postImg && console.log('bucket',postImg)}
+   {/* {postImg && console.log('bucket',postImg)} */}
       <LazyLoadImage src={postImg}
         width='100%' height={400}
         alt="Image Alt"

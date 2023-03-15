@@ -98,7 +98,7 @@ else{
     }
     setError(content)
   if(Object.keys(content).length === 0){
-    console.log('content')
+    // console.log('content')
 
       axios.post('https://www.smedia.fun/api/signup/',{
       username:val.username,
@@ -109,19 +109,19 @@ else{
       first_name:val.firstname,
 
     }).then((response)=>{
-      console.log(response);
+      // console.log(response);
       if(response.status ==201){
       setValue({email:'',phone:'',lastname:'',firstname:'',username:'',password:''})
       setError({eusername:'',epassword:'',eemail:'',elastname:'',efirstname:'',ephone:''})
       navigate('/')
       }
       else if(response.status==409){
-        console.log('409',response)
+        // console.log('409',response)
       }
     }).catch((error)=>{
      if(error.response.status===409){
 
-       console.log('error',error.response.data)
+      //  console.log('error',error.response.data)
        let content ={
         ...error,
         eusername:error.response.data.error
