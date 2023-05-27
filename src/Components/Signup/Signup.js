@@ -100,7 +100,7 @@ else{
   if(Object.keys(content).length === 0){
     // console.log('content')
 
-      axios.post('https://www.smedia.fun/api/signup/',{
+      axios.post('http://127.0.0.1:8000/api/signup/',{
       username:val.username,
       email:val.email,
       phone:val.phone,
@@ -110,12 +110,12 @@ else{
 
     }).then((response)=>{
       // console.log(response);
-      if(response.status ==201){
+      if(response.status ===201){
       setValue({email:'',phone:'',lastname:'',firstname:'',username:'',password:''})
       setError({eusername:'',epassword:'',eemail:'',elastname:'',efirstname:'',ephone:''})
       navigate('/')
       }
-      else if(response.status==409){
+      else if(response.status===409){
         // console.log('409',response)
       }
     }).catch((error)=>{

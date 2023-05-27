@@ -140,7 +140,7 @@ const requestSubmit =()=>{
   }
   setError(content)
   if(Object.keys(content).length === 0){
-  axios.post('https://www.smedia.fun/api/requesttoverify',{
+  axios.post('http://127.0.0.1:8000/api/requesttoverify',{
     name:val.first_name+val.last_name,
     email:val.email,
     phone:val.phone,
@@ -186,7 +186,7 @@ handleClose();
     uploadImage.append('dp',filename)
     props.identity==='mentor'?uploadImage.append('uid',mentorLog.id):uploadImage.append('uid',user.id)
 
-    axios.post(`https://www.smedia.fun/api/changeprofileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
+    axios.post(`http://127.0.0.1:8000/api/changeprofileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
       // console.log(response.data)
       setFilename('')
       setImage('')
@@ -203,7 +203,7 @@ handleClose();
     uploadImage.append('dp',filename)
     props.identity==='mentor'?uploadImage.append('uid',mentorLog.id):uploadImage.append('uid',user.id)
 
-    axios.post(`https://www.smedia.fun/api/profileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
+    axios.post(`http://127.0.0.1:8000/api/profileImage/${props.identity==='mentor'?mentorLog.id:user.id}`,uploadImage).then((response)=>{
       // console.log(response.data)
       setFilename('')
       setImage('')

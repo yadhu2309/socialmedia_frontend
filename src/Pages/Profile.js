@@ -118,7 +118,7 @@ function Profile(props) {
 const Like = (id,uid)=>{
   // console.log('hello',id,'user',uid)
  
-  axios.post(`https://www.smedia.fun/api/like/${id}/${user.id}`,{
+  axios.post(`http://127.0.0.1:8000/api/like/${id}/${user.id}`,{
   pid:id,
   user_who_like:uid,
   }).then((response)=>{
@@ -129,7 +129,7 @@ const Like = (id,uid)=>{
 
 };
 const dislike = (id,uid)=>{
-  axios.delete(`https://www.smedia.fun/api/dislike/${id}/${user.id}`).then((response)=>{
+  axios.delete(`http://127.0.0.1:8000/api/dislike/${id}/${user.id}`).then((response)=>{
     // console.log('suuceess dislike');
     setLike(false)
     setLikeCount(likeCount-1)
@@ -207,7 +207,7 @@ setForuserSave(savedPost[id])
 const check_like=(id)=>{
   // console.log('pls work')
   //  console.log('checklike,id',id)
-  axios.get(`https://www.smedia.fun/api/like_show/${id}/${user.id}`).then((response)=>{
+  axios.get(`http://127.0.0.1:8000/api/like_show/${id}/${user.id}`).then((response)=>{
       
       
   //  console.log('userlike',response.data)
@@ -218,7 +218,7 @@ const check_like=(id)=>{
      }).catch((error)=>{
       // console.log('console.log check_like ',error)
      })
-     axios.get(`https://www.smedia.fun/api/countLike/${id}`).then((response)=>{
+     axios.get(`http://127.0.0.1:8000/api/countLike/${id}`).then((response)=>{
       // console.log('count',response.data)
       setLikeCount(response.data.length)
      }).catch((error)=>{
@@ -232,7 +232,7 @@ const check_like=(id)=>{
 // saved or not
 const check_saved=(id)=>{
 
-  axios.get(`https://www.smedia.fun/api/saved/${id}/${user.id}`).then((response)=>{
+  axios.get(`http://127.0.0.1:8000/api/saved/${id}/${user.id}`).then((response)=>{
       
       
   //  console.log('userlike',response.data)
@@ -249,7 +249,7 @@ const check_saved=(id)=>{
 
 
     useEffect(()=>{
-      axios.get(`https://www.smedia.fun/api/userCheck/${user.id}`).then((response)=>{
+      axios.get(`http://127.0.0.1:8000/api/userCheck/${user.id}`).then((response)=>{
             // 
             // console.log('kio',response.data)
             setVerify(response.data.verified)
@@ -257,7 +257,7 @@ const check_saved=(id)=>{
             
         })
 
-      axios.get(`https://www.smedia.fun/api/profileImage/${user.id}`).then((response)=>{
+      axios.get(`http://127.0.0.1:8000/profileImage/${user.id}`).then((response)=>{
         // 
         // console.log(response.data)
        
@@ -276,7 +276,7 @@ const check_saved=(id)=>{
         
 
        // post list
-          axios.get(`https://www.smedia.fun/api/postget/${user.id}`).then((response)=>{
+          axios.get(`http://127.0.0.1:8000/api/postget/${user.id}`).then((response)=>{
             // 
             // console.log('kio',response.data)
             setLoop(response.data)
@@ -286,18 +286,18 @@ const check_saved=(id)=>{
 
         //saved post
 
-        axios.get(`https://www.smedia.fun/api/saved/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/saved/${user.id}`).then((response)=>{
           setSavedPost(response.data)
         })
 
         // following list
-        axios.get(`https://www.smedia.fun/api/followget/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/followget/${user.id}`).then((response)=>{
           setFollowing(response.data)
           // console.log('following',response.data)
         })
 
         // followers list
-        axios.get(`https://www.smedia.fun/api/followers/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/followers/${user.id}`).then((response)=>{
           setFollowers(response.data)
           // console.log('followers',response.data)
         })
@@ -334,14 +334,14 @@ const check_saved=(id)=>{
     // {followers && console.log('followcount',followers.length)}
   return (
     <div className='homepage'>
-              <div style={{border:'1px solid white',
+              {/* <div style={{border:'1px solid white',
             // position:'fixed'
-            }}>
+            }}> */}
              
 
-                <Grid item xs={12}  sx={{
-                  display:'flex',
-                justifyContent:'center',
+                <Grid container xs={12}  sx={{
+                //   display:'flex',
+                // justifyContent:'center',
                 // marginBottom:'1em',
                 margin:'auto',
                 width:'97%',
@@ -355,8 +355,13 @@ const check_saved=(id)=>{
                 // border:'1px solid white'
                 }}
                 >
-                    <Grid key='G1' item md={12} sx={{marginRight:'5em'}}>
-                    <Box sx={{  bgcolor: 'white',
+                  <Grid item  lg={12} md={12} sm={12} xs={12} sx={{
+                      // marginRight:'5em',
+                      border:'1px solid white',
+                      display:'flex',
+                      justifyContent:'center',
+                      }}>
+                      <Box sx={{  bgcolor: 'white',
                         borderColor: 'text.primary',
                         m: 1,
                         border:'none',
@@ -367,32 +372,44 @@ const check_saved=(id)=>{
                             
                        
                         <img style={{display:'none'}} src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
-       {bool?isLoading ?
-      <Backdrop
-       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-       open
-       
-       >
-       <CircularProgress color="inherit" />
-     </Backdrop>:
-       <img src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
-     :<Avatar sx={{width:'100%',height:'100%'}}/>
-     }
-       
-       {/* <img src={require('../profileImages/'+profile)} width='100%' height='100%'/> */}
-        </Box>
-                {/* {console.log('prosnn',profile)} */}
-          </Grid>
-                    <Grid  key='G2' sx={{}}>
-                        <div key='d01' style={{display:'flex',justifyContent:'space-between',paddingLeft:'3em',paddingRight:'5em',overflowY:'hidden'}}>
-                        <h3 style={{color:'#D9D9D9'}}>{user.username}</h3>
-                        {/* <Button >Edit Profile</Button>                          */}
-                         <Pop veri={verify} val={bool}/> 
-                        {/* <ModalEdit/> */}
-                        </div>
+                        {bool?isLoading ?
+                              <Backdrop
+                              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                              open
+                              
+                              >
+                              <CircularProgress color="inherit" />
+                                </Backdrop>:
+                            <img src={profile} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
+                              :<Avatar sx={{width:'100%',height:'100%'}}/>
+                                  }
                         
-                        <div key='d02' style={{display:'flex',justifyContent:'center',marginLeft:'2em'}}>
-                            <span key='p1' style={{color:'#ffffff',
+                                {/* <img src={require('../profileImages/'+profile)} width='100%' height='100%'/> */}
+                          </Box>
+                                  {/* {console.log('prosnn',profile)} */}
+                    </Grid>
+                    <Grid item  lg={12} md={12} sm={12} xs={12} sx={{
+                      border:'1px solid red'
+                    }}>
+                        <div style={{display:'flex',
+                        justifyContent:'center',
+                        border:'1px solid white',
+                        // paddingLeft:'3em',paddingRight:'5em',
+                        overflowY:'hidden'}}>
+                        <h3 style={{color:'#D9D9D9'}}>{user.username}</h3>
+                        {/* <Button >Edit Profile</Button> 
+                        
+                        */}
+                        {/* settings */}
+                         {/* <Pop veri={verify} val={bool}/>  */}
+                        {/* <ModalEdit/> */}
+                       </div>
+                        
+                        <div style={{display:'flex',
+                        justifyContent:'center',
+                        // marginLeft:'2em'
+                        }}>
+                            <span style={{color:'#ffffff',
                             marginRight:'3em',cursor:'pointer',
                             textTransform:'lowercase'}}>
                               <span style={{marginLeft:'2px',fontWeight:'bold'}}>{loop?loop.length:0}</span>
@@ -435,7 +452,7 @@ const check_saved=(id)=>{
                     </Grid>
                  </Grid>
          <hr style={{width:'97%',margin:'auto',backgroundColor:'white',border:'1px solid white',borderRadius:'5px'}} />
-         </div>
+         {/* </div> */}
          <div>
             <Grid xs={12} item sx={{borderTopColor:'#ffffff',
             marginTop:'.1em',

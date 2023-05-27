@@ -37,7 +37,7 @@ export default function SignIn(props) {
       username: data.get('username'),
       password: data.get('password'),
     });
-    axios.post('https://www.smedia.fun/api/token/',{
+    axios.post('http://127.0.0.1:8000/api/token/',{
       username:data.get('username'),
       password:data.get('password'),
     }).then((response)=>{

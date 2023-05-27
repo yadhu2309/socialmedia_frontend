@@ -108,7 +108,7 @@ const requestDetailshandle=(id)=>{
 
   const approveRequest = (id)=>{
     // console.log("f",id);
-    axios.put(`https://www.smedia.fun/api/approve_user/${id}`,{
+    axios.put(`http://127.0.0.1:8000/api/approve_user/${id}`,{
       approve:true,
     }).then((response)=>{
       // console.log('requestverify',response.data)
@@ -116,7 +116,7 @@ const requestDetailshandle=(id)=>{
     })
   }
   React.useEffect(()=>{
-    axios.get('https://www.smedia.fun/api/requesttoverify').then((response)=>{
+    axios.get('http://127.0.0.1:8000/api/requesttoverify').then((response)=>{
       setRequests(response.data)
       setReqBool(true)
      

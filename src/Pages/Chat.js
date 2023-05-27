@@ -95,7 +95,7 @@ const[selectIndex,setSelectIndex]=useState()
       const roomCreation=(receiver_name,sender_name)=>{
         if(clients.current){clients.current.close()}
 
-         axios.post('https://www.smedia.fun/api/rooms',{
+         axios.post('http://127.0.0.1:8000/api/rooms',{
           room_name:receiver_name+sender_name,
           sender:sender_name,
           receiver:receiver_name
@@ -147,9 +147,9 @@ useEffect(() => {
 useEffect(()=>{
   // console.log('username ',user.username)
    
-  clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${rooms.room_name}/`)
+  clients.current = new W3CWebSocket(`ws://127.0.0.1:8000/ws/${rooms.room_name}/`)
   // setClient(clients)
-  rooms&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&axios.get(`http://127.0.0.1:8000/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
        console.log(clients.current,"hey",rooms.room_name)
@@ -187,23 +187,23 @@ console.log('after send',clients.current)
 
        
         
-        axios.get(`https://www.smedia.fun/api/profileImage/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/profileImage/${user.id}`).then((response)=>{
       if(response.data.dp){
         setProfile(response.data.dp.replace('/media/profileImages/',''))
       }
         })
         // mentor list in chat
-        axios.get('https://www.smedia.fun/api/mentor_list').then((response)=>{
+        axios.get('http://127.0.0.1:8000/api/mentor_list').then((response)=>{
             setMentorlist(response.data)
           })
 
            // following list in chat
-        axios.get(`https://www.smedia.fun/api/followgets/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/followgets/${user.id}`).then((response)=>{
           setFollowing(response.data)
           console.log('following',response.data)
         })
         // followers list
-        axios.get(`https://www.smedia.fun/api/followers/${user.id}`).then((response)=>{
+        axios.get(`http://127.0.0.1:8000/api/followers/${user.id}`).then((response)=>{
 
           console.log('followers',response.data)
           response.data && setFollowers(response.data)

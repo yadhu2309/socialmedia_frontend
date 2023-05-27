@@ -32,41 +32,41 @@ export default function RecipeReviewCard(props) {
     // console.log('postname',l,props.veri)
 
  }
-  
  
-
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+ 
+ 
+ 
+ const handleExpandClick = () => {
+   setExpanded(!expanded);
   };
-
+  
+  {console.log(l.replace('/media/posts/',''))}
   return (
     
     <Card
-    
-     sx={{ maxWidth: 345,marginRight:'10px',marginBottom:'10px',cursor:'pointer'}}>
+    sx={{ maxWidth: 345,marginRight:'10px',marginBottom:'10px',cursor:'pointer'}}>
       {props.veri?
-      <LazyLoadImage src={l}
+      <LazyLoadImage src={require('../../posts/'+l.replace('/media/posts/',''))}
       width={350} height={300}
       alt="Image Alt"
-    />
+      />
       :
-        props.foruser ==='foruser'?
-        <LazyLoadImage src={l}
+      props.foruser ==='foruser'?
+      <LazyLoadImage src={require('../../posts/'+l.replace('/media/posts/',''))}
       width={350} height={300}
       alt="Image Alt"
-    />
+      />
       
-      :<LazyLoadImage src={l}
+      :<LazyLoadImage src={require('../../posts/'+l.replace('/media/posts/',''))}
         width={350} height={300}
         alt="Image Alt"
-      />
+        />
       }
       {/* {props.post==='posts' && <LazyLoadImage src={require('.././posts/'+l)}
        width={350} height={300}
        alt="Image Alt"
-     />
-       } */}
+       />
+      } */}
       
     </Card>
   );
