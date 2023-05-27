@@ -334,9 +334,6 @@ const check_saved=(id)=>{
     // {followers && console.log('followcount',followers.length)}
   return (
     <div className='homepage'>
-              {/* <div style={{border:'1px solid white',
-            // position:'fixed'
-            }}> */}
              
 
                 <Grid container xs={12}  sx={{
@@ -357,7 +354,7 @@ const check_saved=(id)=>{
                 >
                   <Grid item  lg={12} md={12} sm={12} xs={12} sx={{
                       // marginRight:'5em',
-                      border:'1px solid white',
+                      // border:'1px solid white',
                       display:'flex',
                       justifyContent:'center',
                       }}>
@@ -389,11 +386,11 @@ const check_saved=(id)=>{
                                   {/* {console.log('prosnn',profile)} */}
                     </Grid>
                     <Grid item  lg={12} md={12} sm={12} xs={12} sx={{
-                      border:'1px solid red'
+                      // border:'1px solid red'
                     }}>
                         <div style={{display:'flex',
                         justifyContent:'center',
-                        border:'1px solid white',
+                        // border:'1px solid white',
                         // paddingLeft:'3em',paddingRight:'5em',
                         overflowY:'hidden'}}>
                         <h3 style={{color:'#D9D9D9'}}>{user.username}</h3>
@@ -401,25 +398,34 @@ const check_saved=(id)=>{
                         
                         */}
                         {/* settings */}
-                         {/* <Pop veri={verify} val={bool}/>  */}
                         {/* <ModalEdit/> */}
+                       </div>
+                       <div style={{
+                        // border:'1px solid yellow'
+                       }}>
+                          <Pop veri={verify} val={bool}/> 
+
                        </div>
                         
                         <div style={{display:'flex',
-                        justifyContent:'center',
-                        // marginLeft:'2em'
+                        justifyContent:'space-evenly',
+                         marginTop:'1em'
                         }}>
                             <span style={{color:'#ffffff',
-                            marginRight:'3em',cursor:'pointer',
+                            // marginRight:{lg:'3rem',md:'3rem',sm:'3rem'},
+                            cursor:'pointer',
                             textTransform:'lowercase'}}>
-                              <span style={{marginLeft:'2px',fontWeight:'bold'}}>{loop?loop.length:0}</span>
+                              <span style={{marginLeft:'2px',
+                              fontWeight:'bold'}}>{loop?loop.length:0}</span>
                               &nbsp;POSTS</span>
-                            <span key='p2' style={{color:'#ffffff',
-                            marginRight:'3em',cursor:'pointer',
+                            <span style={{color:'#ffffff',
+                            // marginRight:{lg:'3em',md:'3rem',sm:'3rem'},
+                            cursor:'pointer',
                             textTransform:'lowercase',
                             cursor:'pointer'}}
                             onClick={()=>{setModalContent('followers');handleOpen();setIdentify(true)}}>
-                              <span style={{marginLeft:'2px',fontWeight:'bold'}}>
+                              <span style={{marginLeft:'2px',
+                              fontWeight:'bold'}}>
                                 {followers?followers.length>=0?followers.length:0:
                                 //loader
                                 <Backdrop
@@ -431,7 +437,7 @@ const check_saved=(id)=>{
                               </Backdrop>}</span>&nbsp;FOLLOWERS
                                 </span>
                             <span style={{color:'#ffffff',
-                            marginRight:'3em',
+                            // marginRight:{lg:'3em',md:'3rem',sm:'3rem'},
                             cursor:'pointer',
                             textTransform:'lowercase',
                             cursor:'pointer'}}
@@ -451,17 +457,27 @@ const check_saved=(id)=>{
                                                     
                     </Grid>
                  </Grid>
-         <hr style={{width:'97%',margin:'auto',backgroundColor:'white',border:'1px solid white',borderRadius:'5px'}} />
-         {/* </div> */}
-         <div>
+         <hr style={{width:'97%',
+         margin:'auto',backgroundColor:'white',
+         border:'1px solid white',
+         borderRadius:'5px'
+         }} />
+
             <Grid xs={12} item sx={{borderTopColor:'#ffffff',
             marginTop:'.1em',
             // backgroundColor:'#323333',
             }}> 
               
-                <div key='d11' style={{display:'flex',justifyContent:'center'}}>
-                    <div key='d11.1' style={{display:'flex',marginTop:'1em'}}>
-                        <p key='p01' id='post' className='navlabel' onClick={()=>handleNav('post')} 
+                <div style={{display:'flex',
+                // border:'1px solid white',
+                justifyContent:'center'}}>
+                    <div 
+                    style={{display:'flex',
+                    marginTop:'1em',
+                    // border:'1px solid white',
+
+                    }}>
+                        <p id='post' className='navlabel' onClick={()=>handleNav('post')} 
                         style={{color:'#ffffff',marginRight:'3em',cursor:'pointer',
                         fontWeight:'bold'}}>
                           <InsertPhotoIcon/>
@@ -481,7 +497,15 @@ const check_saved=(id)=>{
                 {/* <Stack  direction={{ xs: 'column', sm: 'row' }}  spacing={1}> */}
                 {!nav?
                 verify?
-                <Grid container spacing={2} direction="row"  justify="center" style={{margin:'auto',width:'97%',paddingLeft:'5em',paddingTop:'1em',paddingBottom:'5em'}} alignItems="center" >
+                <Grid container spacing={2} direction={{lg:'row',md:'row',sm:'row',xs:'column'}}
+                 justify="center" 
+                 style={{margin:'auto',
+                 width:'97%',
+                //  paddingLeft:'5em',
+                 paddingTop:'1em',
+                  paddingBottom:'5em'
+              }} 
+                 alignItems="center" >
                 {loop?loop.map((data,index)=>{
                       // img = data.image.replace('/media/posts/','')
                       // console.log("o",data)
@@ -592,7 +616,6 @@ const check_saved=(id)=>{
            {/* {console.log("image_one",postDetailsImage)} */}
             
             </Grid>
-            </div>
 
 
  
