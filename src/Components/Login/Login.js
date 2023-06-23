@@ -139,7 +139,7 @@ export default function SignIn(props) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: '#252525' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -196,8 +196,8 @@ sx={{
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              color='secondary'
+              sx={{ mt: 3, mb: 2,background:'#252525' }}
+              // color='secondary'
             >
               Sign In
             </Button>

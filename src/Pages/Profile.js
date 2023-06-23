@@ -5,56 +5,54 @@ import React, { useEffect, useMemo, useState } from 'react'
 import NavBar from '../Components/MediaNavbar/NavBar'
 import { AuthContext } from '../utils/AuthContext'
 import PostCard from '../Components/PostCard/PostCard'
-import { Stack } from '@mui/system'
 import Box from '@mui/material/Box';
 
 import Pop from '../Components/Pop/Pop'
-import ModalEdit from '../Components/Modal/Modal'
 
 //backdrop
   import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+// import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+// import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModalProfile from '../Components/Modal/ModalProfile'
 import { useNavigate } from 'react-router-dom'
 
 import './pages.css'
 
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    // width: 400,
-    // bgcolor: '#c8ccc9',
-    // border: '2px solid white',
-    boxShadow: 24,
-    padding: 1,
-    // height:500,
-    minWidth:700,
-    display:'flex',
-    borderRadius:'10px',
-    backgroundColor:'#323333',
-    // backgroundColor:'#494646',
-    // justifyContent:'center',
-    // alignItems:'center'
+// const style = {
+//     position: 'absolute',
+//     top: '50%',
+//     left: '50%',
+//     transform: 'translate(-50%, -50%)',
+//     // width: 400,
+//     // bgcolor: '#c8ccc9',
+//     // border: '2px solid white',
+//     boxShadow: 24,
+//     padding: 1,
+//     // height:500,
+//     minWidth:700,
+//     display:'flex',
+//     borderRadius:'10px',
+//     backgroundColor:'#323333',
+//     // backgroundColor:'#494646',
+//     // justifyContent:'center',
+//     // alignItems:'center'
   
-  };
+//   };
 
-  const commonStyles ={
-    // border:'1px solid white'
-    width:'97%',
-    margin:'auto',
-  }
+  // const commonStyles ={
+  //   // border:'1px solid white'
+  //   width:'97%',
+  //   margin:'auto',
+  // }
 
 function Profile(props) {
 
@@ -64,12 +62,12 @@ function Profile(props) {
     const[a,setA]=useState([]);
     let[profile,setProfile] = useState([]);
     const[nav,setNav] = useState(false);
-    const[colour,setColour] = useState({post:'',saved:''})
+    // const[colour,setColour] = useState({post:'',saved:''})
     
     const[bool,setBool]=useState(false)
-    const[modalbool,setModalBool] = useState(false)
+    // const[modalbool,setModalBool] = useState(false)
 
-   const[postDetails,setPostDetails] = useState()
+  //  const[postDetails,setPostDetails] = useState()
    const[postDetailsImage,setPostDetailsImage] = useState({one:'',two:'',three:''})
    const[post_details,setPost_Details] = useState()
 
@@ -393,7 +391,8 @@ const check_saved=(id)=>{
                         // border:'1px solid white',
                         // paddingLeft:'3em',paddingRight:'5em',
                         overflowY:'hidden'}}>
-                        <h3 style={{color:'#D9D9D9'}}>{user.username}</h3>
+                        <h3 style={{color:'#D9D9D9'}}>{user.username}{verify && <VerifiedIcon />}
+                       </h3>
                         {/* <Button >Edit Profile</Button> 
                         
                         */}
@@ -497,7 +496,8 @@ const check_saved=(id)=>{
                 {/* <Stack  direction={{ xs: 'column', sm: 'row' }}  spacing={1}> */}
                 {!nav?
                 verify?
-                <Grid container spacing={2} direction={{lg:'row',md:'row',sm:'row',xs:'column'}}
+                <Grid container spacing={2}
+                 direction={{lg:'row',md:'row',sm:'row',xs:'column'}}
                  justify="center" 
                  style={{margin:'auto',
                  width:'97%',
@@ -567,7 +567,11 @@ const check_saved=(id)=>{
                 
                 </Grid>:
                 //Saved posts
-                <Grid container spacing={2} direction="row"  justify="center" style={{margin:'auto',width:'97%',paddingLeft:'5em',paddingTop:'1em',paddingBottom:'5em'}} alignItems="center" >
+                <Grid container spacing={2} 
+                direction={{lg:'row',md:'row',sm:'row',xs:'column'}}
+                justify="center" 
+                style={{margin:'auto',width:'97%',
+                paddingTop:'1em',paddingBottom:'5em'}} alignItems="center" >
                 {savedPost?savedPost.map((data,index)=>{
                       // img = data.image.replace('/media/posts/','')
                       //  console.log("saved post by user",data)

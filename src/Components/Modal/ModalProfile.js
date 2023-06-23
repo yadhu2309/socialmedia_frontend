@@ -38,7 +38,7 @@ const style = {
     boxShadow: 24,
     padding: 1,
     // height:500,
-    minWidth:700,
+    // minWidth:{lg:700,xs:300},
     display:'flex',
     borderRadius:'10px',
     backgroundColor:'#323333',
@@ -61,7 +61,7 @@ props.save&&props.setSave(false)};
 let{user,usersId,setUsersId,openModal,setOpenModal} = React.useContext(AuthContext)
 
 const saved =()=>{
-    axios.post('https://www.smedia.fun/api/saved/',{
+    axios.post('http://127.0.0.1:8000/api/saved/',{
       pid:props.post_details.id,
       user_who_own:props.post_details.uid,
       user_who_save:user.id,
@@ -74,7 +74,7 @@ const saved =()=>{
    }
 
    const unsave=()=>{
-    axios.delete(`https://www.smedia.fun/api/saved/${props.post_details.pid}/${user.id}`).then((response)=>{
+    axios.delete(`http://127.0.0.1:8000/api/saved/${props.post_details.pid}/${user.id}`).then((response)=>{
       props.setSave(false)
       
     })
@@ -95,13 +95,12 @@ const saved =()=>{
               >
         <Fade in={openModal}>
           <Box sx={{...style,height:props.modalContent==='post'?500:300,
-    minWidth:props.modalContent==='post'?700:300}} >
+    minWidth:props.modalContent==='post'?{lg:700,md:500,sm:400,xs:300}:300}} >
            
           {props.modalContent === 'post'?<> <Box style={{
-      
-
-            
-           width:props.modalContent==='post'?'60%':300,paddingTop:'4em'}}>
+            border:"1px solid blue",
+           width:props.modalContent==='post'?'60%':300,
+           paddingTop:'4em'}}>
 {/* {props.verify && console.log('postdetails when verify',props.post_details)} */}
           {/* for identifying the user is verified */}
           {/* <Backdrop
@@ -116,19 +115,25 @@ const saved =()=>{
           
           //  <Carousel veri={verify} imgvalone={verifyimage}/>
           props.verifyimage && 
-         <> <img style={{display:'none'}} src={props.verifyimage} onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
+         <> <img style={{display:'none'}}
+          // src={props.verifyimage}
+          src={require('../../posts/'+props.verifyimage.replace('/media/posts/',''))}
+
+           onLoad={() => setIsLoading(false)} width='100%' height='100%'/>
          {isLoading? <Backdrop
        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
        open
        
        >
        <CircularProgress color="inherit" />
+       {console.log("image",props.verifyimage,props.verifyimage.replace('/media/posts/',''))}
      </Backdrop>:<LazyLoadImage
           // className="d-block w-100"
           width='100%'
            height={300}
            onLoad={() => setIsLoading(false)}
-          src={props.verifyimage}
+           src={require('../../posts/'+props.verifyimage.replace('/media/posts/',''))}
+          // src={props.verifyimage}
           alt="First slide"
         />}</>
            : props.foruser==='foruser'
