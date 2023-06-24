@@ -262,7 +262,7 @@ else{
 if(Object.keys(content).length === 0){
   setError({eusername:'',epassword:'',eemail:'',
   elastname:'',efirstname:'',ephone:'',eaddress:'',ecountry:'',estate:''})
-    axios.post('https://www.smedia.fun/api/mentors',{
+    axios.post('https://prosmedia.online/api/mentors',{
       username:val.username,
       email:val.email,
       phone:val.phone,

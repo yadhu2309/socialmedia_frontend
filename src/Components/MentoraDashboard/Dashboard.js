@@ -172,7 +172,7 @@ const roomCreation=(receiver_name,sender_name)=>{
   //    setRooms(receiver_name+sender_name):set
   setReceiverName(receiver_name)
 console.log('mentorroom',receiver_name+sender_name)
-   axios.post('https://www.smedia.fun/api/rooms',{
+   axios.post('https://prosmedia.online/api/rooms',{
     room_name:receiver_name+sender_name,
     sender:sender_name,
     receiver:receiver_name
@@ -223,9 +223,9 @@ React.useEffect(() => {
 React.useEffect(()=>{
   // console.log('username ',user.username)
    
-  clients.current = new W3CWebSocket(`wss://www.smedia.fun/ws/${rooms.room_name}/`)
+  clients.current = new W3CWebSocket(`wss://www.prosmedia.online/ws/${rooms.room_name}/`)
   // setClient(clients)
-  rooms&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&axios.get(`https://prosmedia.online/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
        console.log(clients.current,"hey",rooms.room_name)
@@ -252,7 +252,7 @@ console.log('after send',clients.current)
 
 },[rooms.room_name])
 React.useEffect(()=>{
-  rooms&&selectUser.username===receiverName&&axios.get(`https://www.smedia.fun/api/chatmessages/${rooms.id}`).then((response)=>{
+  rooms&&selectUser.username===receiverName&&axios.get(`https://prosmedia.online/api/chatmessages/${rooms.id}`).then((response)=>{
     setMessages(response.data)
 })
 
@@ -268,7 +268,7 @@ React.useEffect(()=>{
 
   const handleFollow = (id)=>{
     console.log('followid',id)
-    axios.post(`https://www.smedia.fun/api/follow_check/${mentorLog.id}`,{
+    axios.post(`https://prosmedia.online/api/follow_check/${mentorLog.id}`,{
       acc_uid:mentorLog.id,
       f_uid:id
     }).then((response)=>{
@@ -348,17 +348,17 @@ personalstate && setPersonalstate(false)
   React.useEffect(()=>{
 
     //users
-    axios.get('https://www.smedia.fun/api/users').then((response)=>{
+    axios.get('https://prosmedia.online/api/users').then((response)=>{
         setUsers(response.data)
         // console.log('users data',response.data)
     })
 
     //verifeid users
-    axios.get('https://www.smedia.fun/api/userlist').then((response)=>{
+    axios.get('https://prosmedia.online/api/userlist').then((response)=>{
       setV_users(response.data)
     })
 
-    axios.get(`https://www.smedia.fun/api/profileImage/${mentorLog.id}`).then((response)=>{
+    axios.get(`https://prosmedia.online/api/profileImage/${mentorLog.id}`).then((response)=>{
       // 
       // console.log(response.data)
      
@@ -369,16 +369,16 @@ personalstate && setPersonalstate(false)
       
   })
 
-  axios.get('https://www.smedia.fun/api/mentor_list').then((response)=>{
+  axios.get('https://prosmedia.online/api/mentor_list').then((response)=>{
     setMentorlist(response.data)
   })
   // follow 
-  axios.get(`https://www.smedia.fun/api/follow/${mentorLog.id}`).then((response)=>{
+  axios.get(`https://prosmedia.online/api/follow/${mentorLog.id}`).then((response)=>{
     console.log('menotfollow',response.data);
     setFollow(response.data)
 })
 
-axios.get(`https://www.smedia.fun/api/followgets/${mentorLog.id}`).then((response)=>{
+axios.get(`https://prosmedia.online/api/followgets/${mentorLog.id}`).then((response)=>{
           setConnection(response.data)
           // console.log('following',response.data)
         })

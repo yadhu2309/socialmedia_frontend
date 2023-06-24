@@ -37,7 +37,7 @@ export default function SignIn(props) {
       username: data.get('username'),
       password: data.get('password'),
     });
-    axios.post('http://127.0.0.1:8000/api/token/',{
+    axios.post('https://prosmedia.online/api/token/',{
       username:data.get('username'),
       password:data.get('password'),
     }).then((response)=>{
@@ -99,7 +99,7 @@ export default function SignIn(props) {
     console.log(user_obj)
     
     
-    axios.post("https://www.smedia.fun/api/google_signin",{
+    axios.post("https://prosmedia.online/api/google_signin",{
       username:user_obj.name,
       email:user_obj.email,
       googleprofile:user_obj.picture,

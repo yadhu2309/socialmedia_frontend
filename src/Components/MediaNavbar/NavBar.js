@@ -156,7 +156,7 @@ const[messages,setMessages] = useState([])
   const roomCreation=()=>{
        
 
-    axios.post('https://www.smedia.fun/api/rooms',{
+    axios.post('https://prosmedia.online/api/rooms',{
      room_name:user.username,
      sender:'a',
      receiver:user.username
@@ -238,7 +238,7 @@ const[messages,setMessages] = useState([])
 
   // }
   React.useEffect(()=>{
-    axios.get('https://www.smedia.fun/api/allusers').then((response)=>{
+    axios.get('https://prosmedia.online/api/allusers').then((response)=>{
       setAllUsers(response.data)
     })
     roomCreation()
@@ -248,7 +248,7 @@ const[messages,setMessages] = useState([])
 
    
 
-    axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
+    axios.get(`https://prosmedia.online/api/notify_get/${user.id}`).then((respone)=>{
       setNotification(respone.data)
       // console.log('setnotification',respone.data)
 })
@@ -256,7 +256,7 @@ const[messages,setMessages] = useState([])
   },[notify])
 
   const handleNotification=()=>{
-    axios.get(`https://www.smedia.fun/api/notify_get/${user.id}`).then((respone)=>{
+    axios.get(`https://prosmedia.online/api/notify_get/${user.id}`).then((respone)=>{
             setNotification(respone.data)
             // console.log('setnotification',respone.data)
     })
