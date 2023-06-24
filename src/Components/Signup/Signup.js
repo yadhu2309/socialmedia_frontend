@@ -100,7 +100,7 @@ else{
   if(Object.keys(content).length === 0){
     // console.log('content')
 
-      axios.post('http://prosmedia.online/api/signup/',{
+      axios.post('https://prosmedia.online/api/signup/',{
       username:val.username,
       email:val.email,
       phone:val.phone,
