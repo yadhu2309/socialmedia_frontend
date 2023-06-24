@@ -116,7 +116,7 @@ function Profile(props) {
 const Like = (id,uid)=>{
   // console.log('hello',id,'user',uid)
  
-  axios.post(`http://127.0.0.1:8000/api/like/${id}/${user.id}`,{
+  axios.post(`https://prosmedia.online/api/like/${id}/${user.id}`,{
   pid:id,
   user_who_like:uid,
   }).then((response)=>{
@@ -205,7 +205,7 @@ setForuserSave(savedPost[id])
 const check_like=(id)=>{
   // console.log('pls work')
   //  console.log('checklike,id',id)
-  axios.get(`http://127.0.0.1:8000/api/like_show/${id}/${user.id}`).then((response)=>{
+  axios.get(`https://prosmedia.online/api/like_show/${id}/${user.id}`).then((response)=>{
       
       
   //  console.log('userlike',response.data)
@@ -216,7 +216,7 @@ const check_like=(id)=>{
      }).catch((error)=>{
       // console.log('console.log check_like ',error)
      })
-     axios.get(`http://127.0.0.1:8000/api/countLike/${id}`).then((response)=>{
+     axios.get(`https://prosmedia.online/api/countLike/${id}`).then((response)=>{
       // console.log('count',response.data)
       setLikeCount(response.data.length)
      }).catch((error)=>{
@@ -230,7 +230,7 @@ const check_like=(id)=>{
 // saved or not
 const check_saved=(id)=>{
 
-  axios.get(`http://127.0.0.1:8000/api/saved/${id}/${user.id}`).then((response)=>{
+  axios.get(`https://prosmedia.online/api/saved/${id}/${user.id}`).then((response)=>{
       
       
   //  console.log('userlike',response.data)
@@ -247,7 +247,7 @@ const check_saved=(id)=>{
 
 
     useEffect(()=>{
-      axios.get(`http://127.0.0.1:8000/api/userCheck/${user.id}`).then((response)=>{
+      axios.get(`https://prosmedia.online/api/userCheck/${user.id}`).then((response)=>{
             // 
             // console.log('kio',response.data)
             setVerify(response.data.verified)
@@ -255,7 +255,7 @@ const check_saved=(id)=>{
             
         })
 
-      axios.get(`http://127.0.0.1:8000/profileImage/${user.id}`).then((response)=>{
+      axios.get(`https://prosmedia.online/profileImage/${user.id}`).then((response)=>{
         // 
         // console.log(response.data)
        
@@ -266,7 +266,7 @@ const check_saved=(id)=>{
         
     })
 
-     !verify &&  axios.get(`http://127.0.0.1:8000/api/proposals/${user.id}`).then((response)=>{
+     !verify &&  axios.get(`https://prosmedia.online/api/proposals/${user.id}`).then((response)=>{
                  setA(response.data)
                 //   console.log("response",response.data)
         })
@@ -274,7 +274,7 @@ const check_saved=(id)=>{
         
 
        // post list
-          axios.get(`http://127.0.0.1:8000/api/postget/${user.id}`).then((response)=>{
+          axios.get(`https://prosmedia.online/api/postget/${user.id}`).then((response)=>{
             // 
             // console.log('kio',response.data)
             setLoop(response.data)
@@ -284,18 +284,18 @@ const check_saved=(id)=>{
 
         //saved post
 
-        axios.get(`http://127.0.0.1:8000/api/saved/${user.id}`).then((response)=>{
+        axios.get(`https://prosmedia.online/api/saved/${user.id}`).then((response)=>{
           setSavedPost(response.data)
         })
 
         // following list
-        axios.get(`http://127.0.0.1:8000/api/followget/${user.id}`).then((response)=>{
+        axios.get(`https://prosmedia.online/api/followget/${user.id}`).then((response)=>{
           setFollowing(response.data)
           // console.log('following',response.data)
         })
 
         // followers list
-        axios.get(`http://127.0.0.1:8000/api/followers/${user.id}`).then((response)=>{
+        axios.get(`https://prosmedia.online/api/followers/${user.id}`).then((response)=>{
           setFollowers(response.data)
           // console.log('followers',response.data)
         })

@@ -108,7 +108,7 @@ const[error,setError] = useState()
 
     }
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:8000/api/userCheck/${user.id}`).then((response)=>{
+        axios.get(`https://prosmedia.online/api/userCheck/${user.id}`).then((response)=>{
             // 
             // console.log('kio',response.data)
             setCheck(response.data.verified)
@@ -132,7 +132,7 @@ const[error,setError] = useState()
         uploadImage.append('uid',user.id)
 
         
-        axios.post('http://127.0.0.1:8000/api/proposal',uploadImage).then((response)=>{
+        axios.post('https://prosmedia.online/api/proposal',uploadImage).then((response)=>{
             // console.log("received",response.data);
             setImageFile('')
             setMoreImageFile({one:'',two:''})
@@ -161,7 +161,7 @@ const[error,setError] = useState()
     uploadImage.append('image',imageFile)
     uploadImage.append('title',val.title)
     uploadImage.append('uid',user.id)
-    axios.post('http://127.0.0.1:8000/api/postcreate',uploadImage).then((response)=>{
+    axios.post('https://prosmedia.online/api/postcreate',uploadImage).then((response)=>{
         setValue({title:'',describe:''})
         setImageFile('')
         navigate('/user/profile')
