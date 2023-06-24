@@ -100,7 +100,7 @@ else{
   if(Object.keys(content).length === 0){
     // console.log('content')
 
-      axios.post('http://127.0.0.1:8000/api/signup/',{
+      axios.post('http://prosmedia.online/api/signup/',{
       username:val.username,
       email:val.email,
       phone:val.phone,
